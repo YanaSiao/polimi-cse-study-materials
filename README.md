@@ -69,7 +69,6 @@ If this repository helps you, consider:
 - sharing it with fellow students
 - contributing back to improve it for others
 
-- 
 ## ⚠️ Disclaimer
 
 This repository is **not an official resource** of Politecnico di Milano.
