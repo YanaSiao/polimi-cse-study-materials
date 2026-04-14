@@ -63,6 +63,7 @@ Be prepared to:
 
 I recommend creating short chains of keywords that help you reconstruct the full explanation and memorize it.
 
+
 The practical part of the test mimics the advanced exercises from the exercise sessions and mainly consists of:
 - Stochastic Process evaluation
   - variance
@@ -74,6 +75,18 @@ The practical part of the test mimics the advanced exercises from the exercise s
 My best approach was solving the advanced exercises without notes and making sure I truly understood the algorithms.
 
 When preparing, train with a timer and aim to finish in about 70 minutes.
+
+
+---
+
+⚠️ **Important note**
+
+In previous years, it was observed that some theoretical notions presented by different professors are **not perfectly aligned**.  
+The same concepts or theorems may be **named or formulated differently**.
+
+To avoid confusion during the exam, I strongly recommend reviewing the **theory from both professors**.
+
+The notation used in the **exercise part is consistent**, so this issue mainly affects the theoretical questions.
 
 
 ## Personal Opinion About the Course
