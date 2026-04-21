@@ -15,6 +15,9 @@ This folder includes:
 - **Oral exam questions**  
   A collection of questions gathered from previous oral exam sessions.
 
+- **Written test questions**  
+  A collection of questions from previous exam sessions.
+
 - **Study materials**  
   Notes and resources used for theory review and exam preparation.
 
