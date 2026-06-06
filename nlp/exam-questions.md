@@ -27,13 +27,34 @@
 |---|---|---|
 | Actual + | 95 | 25 |
 | Actual − | 5 | 75 |
+
 What is the Precision of the classifier?
 - a. 85%
 - b. 79.2%
 - c. 93.8%
 - d. 75%
+- e. 47.5%
+- f. 90%
+- g. NONE of the other options is correct
+- h. 95%
 
-### **Q4.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the PRIOR probability of seeing a spam email?
+### **Q4.** If the output of a text classifier produces the following confusion matrix on the test set:
+| | Predicted + | Predicted − |
+|---|---|---|
+| Actual + | 75 | 5 |
+| Actual − | 25 | 95 |
+
+What is the Precision of the classifier (for the positive class)?
+- a. 79.2%
+- b. NONE of the other options is correct
+- c. 93.8%
+- d. 90%
+- e. 47.5%
+- f. 95%
+- g. 85%
+- h. 75%
+  
+### **Q5.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the PRIOR probability of seeing a spam email?
 | | 'win' | 'drugs' | 'cheap' | 'wow' | 'prof' | 'greatest' | 'exam' | 'prior' |
 |---|---|---|---|---|---|---|---|---|
 | Spam | 35 | 50 | 54 | 251 | 5 | 31 | 1 | 20 |
@@ -46,22 +67,33 @@ What is the Precision of the classifier?
 - f. NONE of the other options are correct
 - g. 10%
 
-### **Q5.** If the output of a text classifier produces the following confusion matrix on the test set:
-| | Predicted + | Predicted − |
-|---|---|---|
-| Actual + | 75 | 5 |
-| Actual − | 25 | 95 |
-What is the Precision of the classifier (for the positive class)?
-- a. 79.2%
-- b. NONE of the other options is correct
-- c. 93.8%
-- d. 90%
-- e. 47.5%
-- f. 95%
-- g. 85%
-- h. 75%
+### **Q6.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the LIKELIHOOD probability P('win'|Spam)?
+| | 'win' | 'drugs' | 'cheap' | 'wow' | 'prof' | 'greatest' | 'exam' | 'prior' |
+|---|---|---|---|---|---|---|---|---|
+| Spam | 35 | 50 | 54 | 251 | 5 | 31 | 1 | 20 |
+| Not-spam | 14 | 9 | 27 | 1501 | 95 | 120 | 57 | 38 |
+- a. 0.27%
+- b. 29%
+- c. 66.67%
+- d. 12.1%
+- e. 5.4%
+- f. NONE of the other options are correct
+- g. 3.5%
 
-### **Q6.** Consider a Naive Bayes (NB) model for predicting whether a student gets a good grade based on her describing the exam as "easy" but "long". With: P("easy"|good)=2/3, P("long"|good)=1/3, P("easy"|bad)=1/3, P("long"|bad)=2/3, P(good)=3/4. What is the probability that a student gets a good grade given that she describes the exam as "easy" but "long"?
+### **Q7.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the LIKELIHOOD probability P('win'|Not-spam)?
+| | 'win' | 'drugs' | 'cheap' | 'wow' | 'prof' | 'greatest' | 'exam' | 'ever' |
+|---|---|---|---|---|---|---|---|---|
+| Spam | 35 | 50 | 54 | 251 | 5 | 31 | 1 | 20 |
+| Not-spam | 14 | 9 | 27 | 1501 | 95 | 120 | 57 | 38 |
+- a. 0.27%
+- b. 29%
+- c. 66.67%
+- d. 12.1%
+- e. 5.4%
+- f. NONE of the other options are correct
+- g. 3.5%
+
+### **Q8.** Consider a Naive Bayes (NB) model for predicting whether a student gets a good grade based on her describing the exam as "easy" but "long". With: P("easy"|good)=2/3, P("long"|good)=1/3, P("easy"|bad)=1/3, P("long"|bad)=2/3, P(good)=3/4. What is the probability that a student gets a good grade given that she describes the exam as "easy" but "long"?
 - a. 1/3
 - b. 2/3
 - c. NONE of the other options are correct
@@ -69,20 +101,43 @@ What is the Precision of the classifier (for the positive class)?
 - e. 3/4
 - f. 1/4
 
-### **Q7.** Consider a Naive Bayes (NB) model for predicting whether an email is spam based on the presence of words. Given: P("win"|spam)=4/10, P("win"|not-spam)=1/10, P(spam)=2/10. What is the probability that an email containing the word "win" is spam?
+### **Q9.** Consider a Naive Bayes (NB) model for predicting whether an email is spam based on the presence of words. Given: P("win"|spam)=4/10, P("win"|not-spam)=1/10, P(spam)=2/10. What is the probability that an email containing the word "win" is spam?
 - a. 1/2
 - b. 4/10
 - c. 2/10
 - d. 1/10
 - e. NONE of the other options are correct
 
-### **Q8.** Which of the following tasks involves assigning a label from a predefined set of categories to a piece of text?
+### **Q10.** Which of the following tasks involves assigning a label from a predefined set of categories to a piece of text?
 - a. Sentiment analysis
 - b. Text summarization
 - c. Named entity recognition
 - d. Topic modeling
 - e. NONE of the other options is correct
 - f. Text clustering
+
+### **Q11.** Heaps' law states that:
+- a. the frequency of a term in a document is inversely proportional to its rank
+- b. NONE of the other answers is correct
+- c. the number of transistors on a computer chip doubles approximately every 2 years
+- d. the size of the vocabulary grows roughly in proportion to the square root of the length of the document
+- e. for every action there must be an equal and opposite reaction
+- f. the more interesting the topic of the course, the harder is the exam
+
+### **Q12.** The size of the vocabulary grows roughly in proportion to the square root of the length of the document/collection — this is a statement of whose law?
+- a. NONE of the other answers is correct
+- b. Mandelbrot's law
+- c. Murphy's law
+- d. Heap's law
+- e. Moore's law
+- f. Zipf's law
+
+### **Q13.** Zipf's law states that:
+- a. the frequency of a term in a document collection is inversely proportional to its rank
+- b. the number of parameters in a neural network grows exponentially with time
+- c. vocabulary size grows as a function of document length
+- d. language models are inherently unstable
+- e. NONE of the other answers is correct
 
 ---
 
@@ -1129,21 +1184,6 @@ Which, if any, of the following strings would the expression match?
 - e. the simplicity of the approach
 - f. NONE of the other options are correct
 
-### **Q128.** Heaps' law states that:
-- a. the frequency of a term in a document is inversely proportional to its rank
-- b. NONE of the other answers is correct
-- c. the number of transistors on a computer chip doubles approximately every 2 years
-- d. the size of the vocabulary grows roughly in proportion to the square root of the length of the document
-- e. for every action there must be an equal and opposite reaction
-- f. the more interesting the topic of the course, the harder is the exam
-
-### **Q129.** The size of the vocabulary grows roughly in proportion to the square root of the length of the document/collection — this is a statement of whose law?
-- a. NONE of the other answers is correct
-- b. Mandelbrot's law
-- c. Murphy's law
-- d. Heap's law
-- e. Moore's law
-- f. Zipf's law
 
 ### **Q130.** Which of the following statements about the most frequently occurring words in a corpus is true?
 - a. they are the most important words in the query
@@ -1188,18 +1228,6 @@ Which, if any, of the following strings would the expression match?
 - d. NONE of these prompts are appropriate for a planning design pattern
 - e. A prompt that tells the model to answer quickly without breaking down the problem
 
-### **Q136.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the LIKELIHOOD probability P('win'|Spam)?
-| | 'win' | 'drugs' | 'cheap' | 'wow' | 'prof' | 'greatest' | 'exam' | 'prior' |
-|---|---|---|---|---|---|---|---|---|
-| Spam | 35 | 50 | 54 | 251 | 5 | 31 | 1 | 20 |
-| Not-spam | 14 | 9 | 27 | 1501 | 95 | 120 | 57 | 38 |
-- a. 0.27%
-- b. 29%
-- c. 66.67%
-- d. 12.1%
-- e. 5.4%
-- f. NONE of the other options are correct
-- g. 3.5%
 
 ### **Q137.** Which of the following techniques might be used to discover the topics discussed in a collection of documents?
 - a. TF-IDF cosine similarity
@@ -1223,18 +1251,7 @@ Which, if any, of the following strings would the expression match?
 - d. the difficulty to integrate knowledge of context around the extracted entity
 - e. the difficulty associated with writing extraction rules by hand
 
-### **Q140.** Imagine you are building a Naive Bayes classifier for detecting spam emails. You have 2,000 spam emails and 8,000 not-spam emails. What is the LIKELIHOOD probability P('win'|Not-spam)?
-| | 'win' | 'drugs' | 'cheap' | 'wow' | 'prof' | 'greatest' | 'exam' | 'ever' |
-|---|---|---|---|---|---|---|---|---|
-| Spam | 35 | 50 | 54 | 251 | 5 | 31 | 1 | 20 |
-| Not-spam | 14 | 9 | 27 | 1501 | 95 | 120 | 57 | 38 |
-- a. 0.27%
-- b. 29%
-- c. 66.67%
-- d. 12.1%
-- e. 5.4%
-- f. NONE of the other options are correct
-- g. 3.5%
+
 
 ### **Q141.** Consider a Naive Bayes (NB) model for predicting whether a student gets a good grade based on her describing the exam as "easy" but "long". With: P("easy"|good)=2/3, P("long"|good)=1/3, P("easy"|bad)=1/3, P("long"|bad)=2/3, P(good)=3/4. What is the denominator value (marginal probability of the evidence P("easy","long")) used to compute the posterior?
 - a. 2/9
@@ -1346,12 +1363,7 @@ What is the probability of seeing the output "a b d b"?
 - d. perplexity cannot be calculated under these conditions
 - e. NONE of the other choices is correct
 
-### **Q154.** Zipf's law states that:
-- a. the frequency of a term in a document collection is inversely proportional to its rank
-- b. the number of parameters in a neural network grows exponentially with time
-- c. vocabulary size grows as a function of document length
-- d. language models are inherently unstable
-- e. NONE of the other answers is correct
+
 
 ### **Q155.** What is the purpose of "Good-Turing smoothing"?
 - a. to reduce the memory footprint of an ngram language model
