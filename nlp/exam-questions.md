@@ -1,6 +1,6 @@
 # NLP Exam Questions Bank by Yana Siao
 
-## Topic 1: Text Classification
+## Text Classification
 
 ### **Q1.** The main reason for performing stemming before building a text classifier is to:
 - a. correct misspellings in the text
@@ -101,6 +101,22 @@ What is the Precision of the classifier (for the positive class)?
 - e. 3/4
 - f. 1/4
 
+### **Q141.** Consider a Naive Bayes (NB) model for predicting whether a student gets a good grade based on her describing the exam as "easy" but "long". With: P("easy"|good)=2/3, P("long"|good)=1/3, P("easy"|bad)=1/3, P("long"|bad)=2/3, P(good)=3/4. What is the denominator value (marginal probability of the evidence P("easy","long")) used to compute the posterior?
+- a. 2/9
+- b. 5/18
+- c. NONE of the other options are correct
+- d. 7/24
+- e. 1/6
+- f. 1/4
+
+### **Q142.** Consider a Naive Bayes (NB) model for predicting whether an email is spam based on the presence of words. Given: P("win"|spam)=4/10, P("win"|not-spam)=1/10, P(spam)=2/10. What is the denominator value (marginal probability of the evidence P("win")) used to compute the posterior?
+- a. 2/10
+- b. 4/10
+- c. 1/10
+- d. NONE of the other options are correct
+- e. 16/100
+
+
 ### **Q9.** Consider a Naive Bayes (NB) model for predicting whether an email is spam based on the presence of words. Given: P("win"|spam)=4/10, P("win"|not-spam)=1/10, P(spam)=2/10. What is the probability that an email containing the word "win" is spam?
 - a. 1/2
 - b. 4/10
@@ -141,35 +157,82 @@ What is the Precision of the classifier (for the positive class)?
 
 ---
 
-## Topic 2: Text Search
+## Text Search & Clustering
 
-### **Q9.** You are building a document search system and train a BERT model to classify whether a document is relevant to a user query. How might you reduce the computational burden when deploying this system without greatly degrading performance?
+### **Q14.** You are building a document search system and train a BERT model to classify whether a document is relevant to a user query. How might you reduce the computational burden when deploying this system without greatly degrading performance?
 - a. By using GPT2 rather than BERT to classify the documents
 - b. By using a lexical or semantic search engine to first find a set of potentially relevant documents
 - c. By replacing the BERT model with a linear classifier
 - d. NONE of the other options is correct
 - e. By training the BERT model on a sentiment analysis dataset rather than a relevance dataset
 
-### **Q10.** In the context of information retrieval, what are the required steps in the training stage of the two-stage (re)ranking process?
+### **Q15.** In the context of information retrieval, what are the required steps in the training stage of the two-stage (re)ranking process?
 - a. Top k retrieval, Feature extraction, Labeling, Learning
 - b. None of the above
 - c. Corpus indexing, Stopword removal, Stemming, Training Embeddings
 - d. Query expansion, Dimensionality reduction, Clustering, Re-ranking
 - e. Document filtering, Term weighting, Relevance scoring, Feedback loop
 
-### **Q11.** Which of the following is NOT a common ranking function used in term-based information retrieval?
+### **Q16.** Which of the following is (are) NOT a common ranking function(s) used in term-based information retrieval?
 - a. BM25
 - b. TF-IDF
 - c. Vector Space Model with Cosine Similarity
 - d. Jaccard Coefficient
-- e. PageRank
-- f. Levenshtein Distance
-- g. NONE of the other options are correct
+- e. NDCG
+- f. PageRank
+- g. Levenshtein Distance
+- h. NONE of the other options are correct
+- i. Binary cross-entropy
+- j. ROUGE-L
+
+
+### **Q17.** In an information retrieval context, what is a "posting list"?
+- a. a list of documents that match a specific keyword query
+- b. a list of all words present in a specific document
+- c. a list of document identifiers containing a given term, along with frequency metrics
+- d. a list of the most frequent queries entered by users
+- e. NONE of the other answers is correct
+
+### **Q18.** In term-weighting schemes like TF-IDF, the "IDF" term is included to:
+- a. boost the weight of frequent terms within a specific document
+- b. reduce the weight of terms that occur frequently across the entire corpus
+- c. normalise the length of the document vector
+- d. handle out-of-vocabulary terms during testing
+- e. NONE of the other answers is correct
+
+### **Q19.** What is the main advantage of an "inverted index" in a text search system?
+- a. it reduces the storage requirement of the corpus by half
+- b. it allows for sub-linear time retrieval of documents containing query terms
+- c. it automatically corrects spelling mistakes in the user query
+- d. it ranks documents based on user popularity rather than lexical match
+- e. NONE of the other answers is correct
+
+### **Q20.** In evaluating a text retrieval system, "Mean Average Precision" (MAP) measures:
+- a. the percentage of relevant documents retrieved in the top 1 result
+- b. the average precision across multiple queries, taking into account the rank of each relevant document
+- c. the ratio of true positives to false positives across the corpus
+- d. the lexical similarity between the query and the top-ranked document
+- e. NONE of the other answers is correct
 
 ---
 
-## Topic 3: What is language modelling?
+## Language modelling & Word Embeddings
 
+### **Q137.** Which of the following techniques might be used to discover the topics discussed in a collection of documents?
+- a. TF-IDF cosine similarity
+- b. Word2Vec embedding
+- c. Latent Dirichlet Allocation (LDA)
+- d. NONE of the other answers is correct
+- e. Tokenisation algorithm
+- f. Support Vector Machine classifier
+
+### **Q138.** Latent Dirichlet Allocation (LDA) can be used to:
+- a. classify documents into a predefined set of categories
+- b. cluster words based on their structural properties
+- c. automatically parse the syntactical structure of a sentence
+- d. discover the hidden topics discussed in a collection of documents
+- e. NONE of the other options is correct
+  
 ### **Q12.** A statistical language model computes:
 - a. NONE of the other options are correct
 - b. a probability distribution over different languages for a piece of text
@@ -239,6 +302,38 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - l. NONE of the other options are correct
 - m. 0
 
+### **Q151.** Consider a bigram language model with the following marginal and conditional probabilities:
+P(a)=1/2, P(b)=1/4, P(c)=1/8, P(d)=1/8  
+P(b|a)=1/2, P(c|a)=1/2, P(a|b)=1/8, P(b|b)=1/4, P(c|b)=1/8, P(d|b)=1/4  
+P(a|c)=1/3, P(b|c)=1/6, P(c|c)=1/6, P(d|c)=1/3, P(b|d)=1 (all others = 0)  
+What is the probability of seeing the output "a b d b"?
+- a. 1/16
+- b. 1/32
+- c. 1/128
+- d. 1/64
+- e. 1/2
+- f. 1/6
+- g. 1/8
+- h. 1/3
+- i. 1/4
+- j. 1/12
+- k. 1
+- l. NONE of the other options are correct
+
+### **Q152.** Given a vocabulary size V and an ngram order n, what is the maximum number of unique counts that a language model might need to store?
+- a. V + n
+- b. n^V
+- c. V^n
+- d. V * n
+- e. NONE of the other options are correct
+
+### **Q153.** If a model is trained on a tiny corpus of text, what effect is this likely to have on its perplexity when evaluated on a large, independent test set?
+- a. perplexity will be extremely high (or infinite)
+- b. perplexity will be extremely low (close to zero)
+- c. perplexity is unaffected by the size of the training corpus
+- d. perplexity cannot be calculated under these conditions
+- e. NONE of the other choices is correct
+  
 ### **Q18.** Which statement about the limitations of Ngram language models is NOT correct?
 - a. the training corpus is never big enough to estimate high-order ngrams well
 - b. storing counts for high-order ngrams requires massive amounts of memory
@@ -253,11 +348,6 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - d. none of the other options are correct
 - e. backing-off the estimator to use estimates from lower-order n-grams if counts for higher order ones are zero
 
-### **Q20.** In order to improve the probability estimates for an n-gram language model we could:
-- a. ALL of the other options are correct
-- b. smooth all probability estimates by adding a small constant to the word counts
-- c. back-off the estimator to use lower-order n-grams whenever counts for higher-order n-grams are zero
-- d. interpolate the higher-order probability estimates with lower-order estimates
 
 ### **Q21.** Assume that you have learnt GloVE embeddings of size 256 over a vocabulary of one million tokens. Approximately how much memory (in GB) is needed to store all of the embedding vectors using single precision (32-bit) floating point?
 - a. 32GB
@@ -371,12 +461,6 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - i. 4%
 - j. Insufficient information provided in the question to calculate an answer
 
-### **Q34.** What is the total number of parameters in a 3-layer feed-forward Neural Network with 10 input neurons, 20 neurons in the first hidden layer, 20 neurons in the second hidden layer, and 5 output neurons? (Assume all neurons have a bias parameter.)
-- a. 785
-- b. NONE of the other answers are correct
-- c. 545
-- d. 720
-- e. 200
 
 ### **Q35.** Which statement about Deep Neural Networks (DNNs) used in NLP is NOT true?
 - a. DNNs are inherently linear models and thus cannot learn complex non-linear combinations of features
@@ -385,7 +469,7 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - d. ALL of the other options are true
 - e. DNNs learn a hierarchy of useful features automatically from raw data
 - f. DNNs can be more difficult to train than simpler models
-- g. DNNs require large computing resources (/GPUs)
+- g. DNNs require large computing resources (GPUs)
 
 ### **Q36.** If the probability of the sequence "Vincenzo was the best tutor I ever had" was exactly 1/256, what would the perplexity of the sentence be? (Assume tokenisation at the word level.)
 - a. 4
@@ -400,26 +484,66 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - j. 16
 - k. 1/16
 
+### **Q165.** Which embedding technique is explicitly built upon a global term-co-occurrence matrix factorisation approach?
+- a. Word2Vec Continuous Bag of Words (CBOW)
+- b. Word2Vec Skip-gram
+- c. GloVe
+- d. FastText
+- e. One-hot encoding
+
+### **Q166.** What does the "cosine similarity" between two word vectors measure?
+- a. the Euclidean distance between their endpoints
+- b. the angle between the vectors, reflecting structural semantic similarity independent of magnitude
+- c. the sum of the magnitudes of the two vectors
+- d. the difference in frequency between the two words in the corpus
+- e. NONE of the other options are correct
+
+### **Q167.** Why can standard full-word embeddings like Word2Vec NOT represent the word "unbelievability" if it never appeared in the training set?
+- a. Because the word is too long to fit into the memory cache
+- b. Because full-word embedding architectures assign a unique index to each vocabulary word, leading to out-of-vocabulary limitations for unseen strings
+- c. Because the word contains negative morphological prefixes
+- d. Because cosine similarity fails on multi-syllabic tokens
+- e. NONE of the other answers is correct
+
+### **Q168.** The property of vector arithmetic in word embeddings where `vec("King") - vec("Man") + vec("Woman") ≈ vec("Queen")` demonstrates:
+- a. that word embeddings are completely random
+- b. that the embedding space encodes semantic and analogical linear relationships
+- c. that neural networks are unable to handle grammar rules
+- d. that document length affects token similarity
+- e. NONE of the other options are correct
+
+### **Q169.** What optimization trick does Word2Vec Skip-gram use to avoid calculating the full softmax denominator over a massive vocabulary?
+- a. Dropout
+- b. Batch Normalisation
+- c. Negative Sampling
+- d. Layer Normalisation
+- e. Greedy Search
 
 ---
 
-## Topic 4: Importance of Word Order
+## RNN
 
-### **Q38.** The fact that the exclamation mark '!' can denote a factorial (4! = 1\*2\*3\*4), the question mark '?' can indicate a missing value (2, 4, ?, 16, 32), and the period '.' can be a decimal point (4.56), complicates which NLP task?
-- a. POS tagging
-- b. NONE of the other answers are correct
-- c. Classification
-- d. Clustering
-- e. Sentence segmentation
-- f. Named Entity Extraction
+### **Q161.** What type of neural network layer is primarily used to process grid-like structures such as images, but has also been adapted for local feature extraction in NLP text arrays?
+- a. Recurrent Layer
+- b. Linear Layer
+- c. Convolutional Layer
+- d. Attention Layer
+- e. Embedding Layer
 
-### **Q39.** When processing textual documents, which of the following techniques is commonly used for defining patterns and extracting information from the text?
-- a. Hidden Markov Models
-- b. Decision trees
-- c. K-means clustering
-- d. Support Vector Machines
-- e. Regular expressions
-- f. NONE of the other options are correct
+### **Q163.** Which activation function is defined by the formula `f(x) = max(0, x)`?
+- a. Sigmoid
+- b. Tanh
+- c. ReLU
+- d. Softmax
+- e. GeLU
+
+### **Q164.** What problem can occur when training very deep networks where gradients become progressively smaller as they are backpropagated to earlier layers?
+- a. Overfitting
+- b. Exploding Gradients
+- c. Vanishing Gradients
+- d. Underfitting
+- e. Symmetry Breaking
+
 
 ### **Q40.** What makes training RNNs particularly slow?
 - a. very small values of the learning rate must be used to prevent instability of the training procedure
@@ -453,7 +577,90 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 
 ---
 
-## Topic 5: Sequence-to-Sequence Models
+## ReGex
+
+### **Q38.** The fact that the exclamation mark '!' can denote a factorial (4! = 1\*2\*3\*4), the question mark '?' can indicate a missing value (2, 4, ?, 16, 32), and the period '.' can be a decimal point (4.56), complicates which NLP task?
+- a. POS tagging
+- b. NONE of the other answers are correct
+- c. Classification
+- d. Clustering
+- e. Sentence segmentation
+- f. Named Entity Extraction
+
+### **Q39.** When processing textual documents, which of the following techniques is commonly used for defining patterns and extracting information from the text?
+- a. Hidden Markov Models
+- b. Decision trees
+- c. K-means clustering
+- d. Support Vector Machines
+- e. Regular expressions
+- f. NONE of the other options are correct
+
+### **Q147.** Which one of the following regular expressions would match a student email of the form "first.lastname@mail.polimi.it"?
+- a. `[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}`
+- b. `[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{4,}`
+- c. NONE of the other regular expressions would match the desired email address
+- d. ALL of the other regular expressions would match the desired email address
+- e. `[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
+- f. `[a-zA-Z0-9._-]+@[0-9.-]+\.[a-zA-Z]+`
+- g. `[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
+
+### **Q148.** Which, if any, of the following strings would the regular expression `[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]` match?
+- a. ABCDEF8213H521JJ
+- b. ABCDE82G13H521JJ
+- c. ABCDEF8G13H521JJ
+- d. ABCDEF82G13H521J
+- e. ALL of these strings would match the regular expression
+- f. NONE of these strings would match the regular expression
+- g. ABCDEFG8213H521JJ
+
+### **Q149.** Which one of the following options is NOT a valid Regular Expression component?
+- a. `\d` matches any decimal digit
+- b. `*` matches zero or more occurrences of the preceding expression
+- c. `+` matches one or more occurrences of the preceding expression
+- d. `?` matches zero or one occurrence of the preceding expression
+- e. `\w` matches any whitespace character
+- f. `.` matches any single character except newline
+- g. ALL of the options are valid components
+
+### **Q150.** Regular expressions are widely used in NLP applications for:
+- a. training word embedding models
+- b. tokenising, normalising and text pattern matching rules
+- c. learning deep neural network architectures
+- d. computing cosine similarity scores between text document representations
+- e. NONE of the other options is correct
+
+### **Q125.** Consider the following regular expression:
+`regex = "(\\:\\w+\\:|\\<[\\/\\]?3|[\ \\\\D|\\*\\$][\\-\\^]?[\\:\\;\\=]|[\\:\\;\\=B8][\\-\\^]?[3DOPp\\@\\$\\*\\\\)\\(\\/\\|])(?=\\s|[\\!\\.\\?]|$)"`
+Which one of the following types of content matches the regular expression?
+- a. NONE of the other options is correct
+- b. punctuation (e.g. ';', ':', '?'...)
+- c. only symbols like '@', '#', '*', ...
+- d. ALL other options are correct
+- e. emojis
+- f. numbers
+
+### **Q126.** Consider the regular expression: `\d{1,2}-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{2,4}`
+Which, if any, of the following strings would the expression match?
+- a. 21 May 2025
+- b. 2023-Apr-25
+- c. 1:Jan:0000
+- d. 3-Mar-123
+- e. NONE of these strings would match the regular expression
+- f. ALL of these strings would match the regular expression
+- g. 29-Fe-2000
+- h. 01--Jun--2012
+
+### **Q127.** Regular expressions provide a powerful language for writing rules to extract content from text documents, but have various limitations. Which of the following would NOT be considered a limitation of regular-expression based text extraction?
+- a. false positives, due to insufficiency of syntactical structure to prevent them
+- b. the difficulty of writing extraction rules by hand
+- c. the difficulty/inability to integrate knowledge of context around the extracted entity
+- d. false negatives, due to lack of generality of the rule used
+- e. the simplicity of the approach
+- f. NONE of the other options are correct
+  
+---
+
+## Sequence-to-Sequence Models & Transformers
 
 ### **Q44.** How does a self-attention mechanism update embedding vectors?
 - a. NONE of the other answers is correct
@@ -474,6 +681,9 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - h. V
 
 ### **Q46.** The diagram shows an implementation of an attention mechanism. What names are usually given to A, B, and C?
+
+<img width="229" height="215" alt="image" src="https://github.com/user-attachments/assets/06460559-1309-4c7a-8958-d67d3c4cbb4f" />
+
 - a. NONE of the other options is correct
 - b. A: value, B: attention, C: query
 - c. A: query, B: lock, C: key
@@ -1155,36 +1365,6 @@ Using top-k sampling with k set to 2, what is the probability of seeing the outp
 - d. ASCII
 - e. NONE of the other options are correct
 
-### **Q125.** Consider the following regular expression:
-`regex = "(\\:\\w+\\:|\\<[\\/\\]?3|[\ \\\\D|\\*\\$][\\-\\^]?[\\:\\;\\=]|[\\:\\;\\=B8][\\-\\^]?[3DOPp\\@\\$\\*\\\\)\\(\\/\\|])(?=\\s|[\\!\\.\\?]|$)"`
-Which one of the following types of content matches the regular expression?
-- a. NONE of the other options is correct
-- b. punctuation (e.g. ';', ':', '?'...)
-- c. only symbols like '@', '#', '*', ...
-- d. ALL other options are correct
-- e. emojis
-- f. numbers
-
-### **Q126.** Consider the regular expression: `\d{1,2}-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-\d{2,4}`
-Which, if any, of the following strings would the expression match?
-- a. 21 May 2025
-- b. 2023-Apr-25
-- c. 1:Jan:0000
-- d. 3-Mar-123
-- e. NONE of these strings would match the regular expression
-- f. ALL of these strings would match the regular expression
-- g. 29-Fe-2000
-- h. 01--Jun--2012
-
-### **Q127.** Regular expressions provide a powerful language for writing rules to extract content from text documents, but have various limitations. Which of the following would NOT be considered a limitation of regular-expression based text extraction?
-- a. false positives, due to insufficiency of syntactical structure to prevent them
-- b. the difficulty of writing extraction rules by hand
-- c. the difficulty/inability to integrate knowledge of context around the extracted entity
-- d. false negatives, due to lack of generality of the rule used
-- e. the simplicity of the approach
-- f. NONE of the other options are correct
-
-
 ### **Q130.** Which of the following statements about the most frequently occurring words in a corpus is true?
 - a. they are the most important words in the query
 - b. they result in short posting lists
@@ -1229,21 +1409,6 @@ Which, if any, of the following strings would the expression match?
 - e. A prompt that tells the model to answer quickly without breaking down the problem
 
 
-### **Q137.** Which of the following techniques might be used to discover the topics discussed in a collection of documents?
-- a. TF-IDF cosine similarity
-- b. Word2Vec embedding
-- c. Latent Dirichlet Allocation (LDA)
-- d. NONE of the other answers is correct
-- e. Tokenisation algorithm
-- f. Support Vector Machine classifier
-
-### **Q138.** Latent Dirichlet Allocation (LDA) can be used to:
-- a. classify documents into a predefined set of categories
-- b. cluster words based on their structural properties
-- c. automatically parse the syntactical structure of a sentence
-- d. discover the hidden topics discussed in a collection of documents
-- e. NONE of the other options is correct
-
 ### **Q139.** Which of the following would NOT be considered a limitation of regular-expression based text extraction?
 - a. the potential for a high number of false positives, due to insufficiency of syntactical structure to prevent them
 - b. the potential for a high number of false negatives, due to lack of generality of the rule
@@ -1251,22 +1416,6 @@ Which, if any, of the following strings would the expression match?
 - d. the difficulty to integrate knowledge of context around the extracted entity
 - e. the difficulty associated with writing extraction rules by hand
 
-
-
-### **Q141.** Consider a Naive Bayes (NB) model for predicting whether a student gets a good grade based on her describing the exam as "easy" but "long". With: P("easy"|good)=2/3, P("long"|good)=1/3, P("easy"|bad)=1/3, P("long"|bad)=2/3, P(good)=3/4. What is the denominator value (marginal probability of the evidence P("easy","long")) used to compute the posterior?
-- a. 2/9
-- b. 5/18
-- c. NONE of the other options are correct
-- d. 7/24
-- e. 1/6
-- f. 1/4
-
-### **Q142.** Consider a Naive Bayes (NB) model for predicting whether an email is spam based on the presence of words. Given: P("win"|spam)=4/10, P("win"|not-spam)=1/10, P(spam)=2/10. What is the denominator value (marginal probability of the evidence P("win")) used to compute the posterior?
-- a. 2/10
-- b. 4/10
-- c. 1/10
-- d. NONE of the other options are correct
-- e. 16/100
 
 ### **Q143.** Why are Natural Language Processing (NLP) techniques important?
 - a. are important because text can influence public opinion
@@ -1297,72 +1446,6 @@ Which, if any, of the following strings would the expression match?
 - d. contains multiple out-of-vocabulary terms
 - e. NONE of the other options is correct
 
-### **Q147.** Which one of the following regular expressions would match a student email of the form "first.lastname@mail.polimi.it"?
-- a. `[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}`
-- b. `[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{4,}`
-- c. NONE of the other regular expressions would match the desired email address
-- d. ALL of the other regular expressions would match the desired email address
-- e. `[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
-- f. `[a-zA-Z0-9._-]+@[0-9.-]+\.[a-zA-Z]+`
-- g. `[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`
-
-### **Q148.** Which, if any, of the following strings would the regular expression `[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]` match?
-- a. ABCDEF8213H521JJ
-- b. ABCDE82G13H521JJ
-- c. ABCDEF8G13H521JJ
-- d. ABCDEF82G13H521J
-- e. ALL of these strings would match the regular expression
-- f. NONE of these strings would match the regular expression
-- g. ABCDEFG8213H521JJ
-
-### **Q149.** Which one of the following options is NOT a valid Regular Expression component?
-- a. `\d` matches any decimal digit
-- b. `*` matches zero or more occurrences of the preceding expression
-- c. `+` matches one or more occurrences of the preceding expression
-- d. `?` matches zero or one occurrence of the preceding expression
-- e. `\w` matches any whitespace character
-- f. `.` matches any single character except newline
-- g. ALL of the options are valid components
-
-### **Q150.** Regular expressions are widely used in NLP applications for:
-- a. training word embedding models
-- b. tokenising, normalising and text pattern matching rules
-- c. learning deep neural network architectures
-- d. computing cosine similarity scores between text document representations
-- e. NONE of the other options is correct
-
-### **Q151.** Consider a bigram language model with the following marginal and conditional probabilities:
-P(a)=1/2, P(b)=1/4, P(c)=1/8, P(d)=1/8  
-P(b|a)=1/2, P(c|a)=1/2, P(a|b)=1/8, P(b|b)=1/4, P(c|b)=1/8, P(d|b)=1/4  
-P(a|c)=1/3, P(b|c)=1/6, P(c|c)=1/6, P(d|c)=1/3, P(b|d)=1 (all others = 0)  
-What is the probability of seeing the output "a b d b"?
-- a. 1/16
-- b. 1/32
-- c. 1/128
-- d. 1/64
-- e. 1/2
-- f. 1/6
-- g. 1/8
-- h. 1/3
-- i. 1/4
-- j. 1/12
-- k. 1
-- l. NONE of the other options are correct
-
-### **Q152.** Given a vocabulary size V and an ngram order n, what is the maximum number of unique counts that a language model might need to store?
-- a. V + n
-- b. n^V
-- c. V^n
-- d. V * n
-- e. NONE of the other options are correct
-
-### **Q153.** If a model is trained on a tiny corpus of text, what effect is this likely to have on its perplexity when evaluated on a large, independent test set?
-- a. perplexity will be extremely high (or infinite)
-- b. perplexity will be extremely low (close to zero)
-- c. perplexity is unaffected by the size of the training corpus
-- d. perplexity cannot be calculated under these conditions
-- e. NONE of the other choices is correct
-
 
 
 ### **Q155.** What is the purpose of "Good-Turing smoothing"?
@@ -1372,103 +1455,12 @@ What is the probability of seeing the output "a b d b"?
 - d. to smooth out the audio signal in a speech recognition system
 - e. NONE of the other answers is correct
 
-### **Q156.** In an information retrieval context, what is a "posting list"?
-- a. a list of documents that match a specific keyword query
-- b. a list of all words present in a specific document
-- c. a list of document identifiers containing a given term, along with frequency metrics
-- d. a list of the most frequent queries entered by users
-- e. NONE of the other answers is correct
-
-### **Q157.** In term-weighting schemes like TF-IDF, the "IDF" term is included to:
-- a. boost the weight of frequent terms within a specific document
-- b. reduce the weight of terms that occur frequently across the entire corpus
-- c. normalise the length of the document vector
-- d. handle out-of-vocabulary terms during testing
-- e. NONE of the other answers is correct
-
-### **Q158.** What is the main advantage of an "inverted index" in a text search system?
-- a. it reduces the storage requirement of the corpus by half
-- b. it allows for sub-linear time retrieval of documents containing query terms
-- c. it automatically corrects spelling mistakes in the user query
-- d. it ranks documents based on user popularity rather than lexical match
-- e. NONE of the other answers is correct
-
-### **Q159.** In evaluating a text retrieval system, "Mean Average Precision" (MAP) measures:
-- a. the percentage of relevant documents retrieved in the top 1 result
-- b. the average precision across multiple queries, taking into account the rank of each relevant document
-- c. the ratio of true positives to false positives across the corpus
-- d. the lexical similarity between the query and the top-ranked document
-- e. NONE of the other answers is correct
-
 ### **Q160.** Which of the following evaluations represents a "non-parametric" approach?
 - a. t-test
 - b. ANOVA
 - c. Wilcoxon signed-rank test
 - d. F-test
 - e. NONE of the other options are correct
-
-### **Q161.** What type of neural network layer is primarily used to process grid-like structures such as images, but has also been adapted for local feature extraction in NLP text arrays?
-- a. Recurrent Layer
-- b. Linear Layer
-- c. Convolutional Layer
-- d. Attention Layer
-- e. Embedding Layer
-
-### **Q162.** In training deep neural models, what is the purpose of the "Adam" optimiser?
-- a. it ensures that weights are initialised to zero
-- b. it dynamically adjusts the learning rate for each parameter based on historical gradients
-- c. it regularises the network by randomly setting activation nodes to zero
-- d. it calculates exact analytical derivatives without backpropagation
-- e. NONE of the other options are correct
-
-### **Q163.** Which activation function is defined by the formula `f(x) = max(0, x)`?
-- a. Sigmoid
-- b. Tanh
-- c. ReLU
-- d. Softmax
-- e. GeLU
-
-### **Q164.** What problem can occur when training very deep networks where gradients become progressively smaller as they are backpropagated to earlier layers?
-- a. Overfitting
-- b. Exploding Gradients
-- c. Vanishing Gradients
-- d. Underfitting
-- e. Symmetry Breaking
-
-### **Q165.** Which embedding technique is explicitly built upon a global term-co-occurrence matrix factorisation approach?
-- a. Word2Vec Continuous Bag of Words (CBOW)
-- b. Word2Vec Skip-gram
-- c. GloVe
-- d. FastText
-- e. One-hot encoding
-
-### **Q166.** What does the "cosine similarity" between two word vectors measure?
-- a. the Euclidean distance between their endpoints
-- b. the angle between the vectors, reflecting structural semantic similarity independent of magnitude
-- c. the sum of the magnitudes of the two vectors
-- d. the difference in frequency between the two words in the corpus
-- e. NONE of the other options are correct
-
-### **Q167.** Why can standard full-word embeddings like Word2Vec NOT represent the word "unbelievability" if it never appeared in the training set?
-- a. Because the word is too long to fit into the memory cache
-- b. Because full-word embedding architectures assign a unique index to each vocabulary word, leading to out-of-vocabulary limitations for unseen strings
-- c. Because the word contains negative morphological prefixes
-- d. Because cosine similarity fails on multi-syllabic tokens
-- e. NONE of the other answers is correct
-
-### **Q168.** The property of vector arithmetic in word embeddings where `vec("King") - vec("Man") + vec("Woman") ≈ vec("Queen")` demonstrates:
-- a. that word embeddings are completely random
-- b. that the embedding space encodes semantic and analogical linear relationships
-- c. that neural networks are unable to handle grammar rules
-- d. that document length affects token similarity
-- e. NONE of the other options are correct
-
-### **Q169.** What optimization trick does Word2Vec Skip-gram use to avoid calculating the full softmax denominator over a massive vocabulary?
-- a. Dropout
-- b. Batch Normalisation
-- c. Negative Sampling
-- d. Layer Normalisation
-- e. Greedy Search
 
 ### **Q170.** In a Transformer model, why do we multiply the queries and keys matrix by `1 / sqrt(d_k)` inside the softmax?
 - a. to reduce the number of parameters in the model
