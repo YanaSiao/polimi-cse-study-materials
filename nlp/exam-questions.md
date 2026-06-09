@@ -440,6 +440,35 @@ What is the probability of seeing the output "a b d b"?
 - e. Tokenizers that employ byte-pair-encoding cause the resulting network to learn a sub-word embedding
 - f. sub-word embeddings split words up into smaller units and learn an embedding vector for each
 
+### **Q121.** What effect does Byte-Pair Encoding (BPE) achieve in Transformer models?
+- a. ALL of the other answers are CORRECT
+- b. improves performance of the Transformer by taking advantage of morphology of the language
+- c. reduces the vocabulary size with respect to a word-level tokeniser
+- d. allows common suffixes to be removed from words and treated separately
+- e. increases vocabulary size with respect to a character-level tokenizer
+- f. reduces the sequence length by grouping frequent character sequences together
+
+### **Q122.** Byte-pair encoding:
+- a. is a way of quantising the parameters of a transformer such that they only occupy 2 bytes each (half-precision representation)
+- b. agglomerates common consecutive characters together to form sub-word tokens
+- c. represents each word as a byte-pair vector, which is similar to a one-hot vector but with two non-zero values in it
+- d. none of the other options is correct
+- e. encodes text as byte-pairs: 2 bytes for each character in the text
+
+### **Q123.** What are ASCII and UTF-8, and what is the difference between them?
+- a. None of the other options are correct
+- b. Multimedia file formats: main difference is that ASCII is a plain text format, while UTF-8 is a binary format allowing for richer media content
+- c. Encryption algorithms: main difference is that ASCII uses symmetric encryption, while UTF-8 uses asymmetric encryption
+- d. Web development languages: main difference is that ASCII is primarily used for client-side scripting, while UTF-8 is used for server-side scripting
+- e. Character encoding standards: main difference is that ASCII supports only basic English characters, while UTF-8 can represent characters from many languages
+
+### **Q124.** Which of the following is a character encoding standard that can represent characters from many different languages?
+- a. Byte-pair encoding
+- b. FastText
+- c. UTF-8
+- d. ASCII
+- e. NONE of the other options are correct
+  
 ### **Q32.** The English word "hippopotomonstrosesquipedaliophobia" refers to the "fear of monstrously long words". Which of the following well-known technologies could deal well with a text containing this monstrously long word?
 - a. NONE of the other well-known technologies would deal well with this word
 - b. hippopotoBERT
@@ -519,6 +548,59 @@ What is the probability of seeing the output "a b d b"?
 - d. Layer Normalisation
 - e. Greedy Search
 
+---
+
+## Text Pre-processing
+
+### **Q117.** Which of the following is **NOT** a text pre-processing step in an NLP application?
+- a. ALL of the other options are common preprocessing activities
+- b. Masked language modeling
+- c. Removing HTML markup
+- d. Removing stopwords
+- e. Removing low-frequency terms
+- f. Case-folding
+- g. Tokenization
+- h. Spelling correction
+- i. Lemmatization/Stemming
+
+### **Q118.** Which of the following is a **common** text pre-processing step in an NLP application?
+- a. Tokenization
+- b. Removing HTML markup
+- c. ALL of the other options are common preprocessing activities
+- d. Lemmatization or stemming
+- e. Stopword removal
+- f. Case-folding
+
+### **Q119.** Word normalisation is the process of:
+- a. NONE of the other options are correct
+- b. padding the input sequence to BERT so that each sequence has exactly the same length
+- c. dividing the word embedding vector by its L2 norm, so that it has a Euclidean length of 1
+- d. removing profanities (swear words) and other inappropriate content from a piece of text
+- e. aligning words to a common reference dictionary (e.g. by removing punctuation), so as to ensure consistent spelling/formatting throughout the corpus
+
+### **Q120.** What is the difference between stemming and lemmatization?
+- a. Stemming is a simple algorithm that applies rules to remove suffixes from word stems, while lemmatization is a more sophisticated technique that uses a dictionary and morphological analysis to extract the lemma
+- b. Lemmatization is a simple algorithm that applies rules to remove suffixes from word lemmas, while stemming is a more sophisticated technique that uses a dictionary and morphological analysis to extract the stem
+- c. Stemming and lemmatization are exactly the same
+- d. Stemming involves finding the STEM (Science Technology Engineering and Mathematics) terms in the text, while lemmatisation searches only for the lemmas (mathematical equations) in the text
+- e. NONE of the other options are correct
+- f. Stemming involves finding the stem word in the sentence (i.e. the subject of the sentence), while lemmatisation searches for the lemma, which is the primary verb in the sentence
+
+### **Q130.** Which of the following statements about the most frequently occurring words in a corpus is true?
+- a. they are the most important words in the query
+- b. they result in short posting lists
+- c. they should never be removed during preprocessing
+- d. they are the most discriminative words in any document
+- e. NONE of the other answers are correct
+
+### **Q131.** In Information Theory, the logarithm of one over the probability of an event corresponds to:
+- a. the optimal parameter setting for that feature
+- b. the chance that the event will happen again
+- c. the amount of information learnt from the event
+- d. the number of times the event occurs
+- e. nothing — in information theory, the exponent of the probability is important, not its logarithm
+- f. NONE of the other options is correct
+  
 ---
 
 ## RNN
@@ -696,6 +778,8 @@ Which, if any, of the following strings would the expression match?
 - j. A: key, B: value, C: query
 
 ### **Q47.** The formula shown is sometimes used to compute similarity within the attention mechanism of a sequence-to-sequence model. Which (if any) of the following statements about the formula is NOT correct?
+$$\text{similarity}(\vec{h}_{i-1}, \vec{e}_j) = \frac{\vec{h}_{i-1} \cdot \vec{e}_j}{\sqrt{d}}$$
+
 - a. The variable "d" denotes the number of dimensions of the embedding vector
 - b. The variable "h" denotes the previous state of the decoder
 - c. The formula computes multiplicative (rather than additive) attention weights
@@ -838,24 +922,6 @@ Which, if any, of the following strings would the expression match?
 - d. The model is configured to classify text into 4 categories
 - e. NONE of the statements are False
 
-### **Q63.** In order to speed up model training, the Transformer model REMOVED what part of the sequence-to-sequence with attention model architecture? *(2022-23 variant)*
-- a. the decoder network
-- b. the feedforward network
-- c. the encoder network
-- d. the recurrent links within the encoder and decoder
-- e. NONE of the other options is correct
-- f. the self-attention layer
-- g. the normalization layer
-
-### **Q64.** Which statement about the T5 model is NOT true? *(2022-23 variant)*
-- a. T5 has an encoder-decoder architecture just like in the original transformer paper
-- b. T5 is a distilled (smaller) version of BERT
-- c. T5 makes use of a relative positional encoding
-- d. T5 is particularly useful for translation tasks
-- e. T5 comes in various sizes, just like BERT and GPT-2
-- f. T5 can generate a response and thus can be trained for dialog tasks
-- g. ALL of the other answers are correct
-
 ### **Q65.** Which of the following tasks could NOT be modelled as a sequence-to-sequence problem?
 - a. ALL of the other tasks could be treated as sequence-to-sequence problems
 - b. Summarisation (e.g. summarise a patient medical health history for a doctor to read)
@@ -863,9 +929,58 @@ Which, if any, of the following strings would the expression match?
 - d. Translation (e.g. translate official document containing medical jargon into plain language)
 - e. Anonymisation (e.g. remove sensitive information from a hospital discharge letter)
 
+### **Q170.** In a Transformer model, why do we multiply the queries and keys matrix by `1 / sqrt(d_k)` inside the softmax?
+- a. to reduce the number of parameters in the model
+- b. to prevent the dot-products from growing too large in magnitude, which would push the softmax function into regions with dangerously small gradients
+- c. to break the position symmetry of input tokens
+- d. to enforce causal masking during generation
+- e. NONE of the other answers is correct
+
+### **Q171.** What type of attention mechanism is used in the decoder of a Transformer model to ensure it cannot look at future tokens?
+- a. Multi-head Attention
+- b. Cross Attention
+- c. Masked / Causal Self-Attention
+- d. Bidirectional Attention
+- e. Sparse Attention
+
+### **Q172.** "Multi-head attention" allows the model to:
+- a. compress the prompt length dynamically
+- b. attend to information from different representation subspaces at different positions simultaneously
+- c. run on multiple GPUs without communicating parameters
+- d. substitute the feed-forward network block entirely
+- e. NONE of the other options is correct
+
+### **Q173.** In a Transformer block, what is the role of the "Residual Connection"?
+- a. to store hidden tokens for later retrieval tasks
+- b. to pass position details directly to the output layer
+- c. to allow gradients to flow directly through blocks without passing solely through non-linear layers, mitigating vanishing gradient issues
+- d. to enforce strict sorting parameters on sequence indices
+- e. NONE of the other options are correct
+
+### **Q174.** What is the purpose of the "Layer Normalisation" step in a Transformer layer?
+- a. it scales the vocabulary size to a power of 2
+- b. it normalises activations across features within a single training example to stabilize training dynamics
+- c. it flattens the matrix into a single-dimensional array
+- d. it eliminates the need for activation functions like ReLU or GeLU
+- e. NONE of the other options are correct
+
+### **Q175.** Which architecture typically discards the encoder stack entirely, relying instead on autoregressive blocks to predict the subsequent token?
+- a. BERT
+- b. RoBERTa
+- c. Decoder-Only Models (e.g., GPT, Llama)
+- d. T5
+- e. DeBERTa
+  
+### **Q176.** What is a major disadvantage of using absolute positional encodings like sinusoidal vectors?
+- a. They add too many trainable parameters to the base model
+- b. They fail to generalise or extrapolate effectively to sequence lengths longer than those seen during model pre-training
+- c. They make the attention matrix asymmetric by default
+- d. They can only be used with word-level tokenisers
+- e. NONE of the other choices is correct
+  
 ---
 
-## Topic 6: Applications of BERT and  GPT
+## Applications of BERT and  GPT
 
 ### **Q66.** When generating text from a language model, which of the following techniques will likely require the most computational resources and thus be slowest to generate text?
 - a. top-k sampling
@@ -890,6 +1005,49 @@ Which, if any, of the following strings would the expression match?
 - d. greedy sampling
 - e. t-SNE dimensionality reduction
 
+### **Q177.** In text generation, "Beam Search" differs from "Greedy Search" by:
+- a. choosing a random token at each generation step based on temperature distributions
+- b. keeping track of a fixed number (beam width) of the most probable partial sequences at each step rather than just the single best token
+- c. parsing the document from right to left instead of left to right
+- d. removing duplicate n-grams dynamically via regular expression matches
+- e. NONE of the other options is correct
+
+### **Q155.** What is the purpose of "Good-Turing smoothing"?
+- a. to reduce the memory footprint of an ngram language model
+- b. to approximate high-order ngrams using low-rank factorisation
+- c. to re-estimate the probability of unseen or low-frequency n-grams based on the frequency of other low-frequency n-grams
+- d. to smooth out the audio signal in a speech recognition system
+- e. NONE of the other answers is correct
+
+
+### **Q178.** What does the "Temperature" parameter control during token sampling?
+- a. the speed at which the GPU processes text blocks
+- b. the scale of the logits before applying softmax, where higher values flatten the distribution and introduce more randomness/creativity
+- c. the context window limitation profile of the model
+- d. the learning rate decay schedule during instruction tuning
+- e. NONE of the other options are correct
+
+### **Q179.** Top-p sampling (also known as Nucleus sampling) selects from:
+- a. a fixed number of top tokens regardless of cumulative value
+- b. the smallest possible set of top tokens whose cumulative probability exceeds the threshold p
+- c. tokens that have prime number indices in the tokenizer vocabulary matrix
+- d. positions matching absolute sinusoidal indices exclusively
+- e. NONE of the other answers is correct
+
+### **Q180.** Why can text generated using pure Greedy Search sometimes become stuck in repetitive loops?
+- a. because the model parameters change dynamically during inference
+- b. because it deterministically selects the local maximum token, which can lead the context path into highly predictable, cyclic logit loops
+- c. because greedy search forces the model to execute backward passes during text output steps
+- d. because vocabulary indices are arranged alphabetically
+- e. NONE of the other choices is correct
+
+### **Q181.** What is the purpose of a "repetition penalty" parameter during language model decoding?
+- a. it throws a runtime error if the model repeats a word within 10 tokens
+- b. it artificially discounts the logits of tokens that have already appeared in the generated text sequence, discouraging redundancy
+- c. it increases the training loss if validation subsets overlap
+- d. it scales down context parameters across multi-head attention blocks
+- e. NONE of the other options are correct
+
 ### **Q69.** Given a bigram language model, what is the chance that the model produces the word "exam" as the next token after "amazing" if top-k sampling is used with k set to 10? *(Top 10 probabilities: grace 4%, food 3%, location 2%, experience 2%, people 2%, place 2%, minds 2%, experiences 1%, places 1%, exam 1%)*
 - a. 5%
 - b. 6%
@@ -898,12 +1056,34 @@ Which, if any, of the following strings would the expression match?
 - e. 10%
 - f. 4%
 
-### **Q70.** The code below tokenises a piece of text and applies a pre-trained decoder-only transformer to compute output logits. Which of the two code snippets (one using argmax on logits directly, one using softmax first then argmax) produces the most probable token?
+### **Q70.** The code below tokenizes a piece of text and then applies a pre-trained decoder-only transformer to compute output logits for the prompt:
+
+```python
+# Tokenize the input string
+input_encoding = tokenizer(input_string, return_tensors='pt').to(device)
+
+# Get output logits
+outputs = model(**input_encoding)
+```
+
+If we complete the program with the two pieces of code below, which one would produce the most probable token? *(Note that the second piece of code makes use of a softmax function, while the first doesn't.)*
+
+ Code 1
+```python
+arg_max_idx = torch.argmax(outputs.logits[:, -1])
+tokenizer.decode(arg_max_idx)
+```
+
+ Code 2
+```python
+p_dist_next = torch.softmax(outputs.logits[:, -1], dim=1)
+arg_max_idx = torch.argmax(p_dist_next)
+tokenizer.decode(arg_max_idx)
+```
 - a. Code 1 produces the most probable token
 - b. Neither Code 1 nor Code 2 produces the most probable token
 - c. Both solutions produce the most probable token
 - d. Code 2 produces the most probable token
-- e. Logits can't be computed this way
 
 ### **Q71.** When sampling text from a language model, setting the temperature to zero is equivalent to performing:
 - a. Beam Search
@@ -970,11 +1150,54 @@ Which, if any, of the following strings would the expression match?
 - d. By training it to perform supervised learning tasks
 - e. By applying zero-shot, one-shot, or few-shot learning
 
+### **Q132.** Which of the following prompts would be the best if you are building an information extraction system using a few-shot learning approach?
+- a. A prompt that contains a detailed description of the entity schema, constraints, rules, structural constraints, error profiles, along with 5 high quality input/output examples of matching structural formats and descriptions
+- b. NONE of these approaches are valid
+- c. A prompt that provides an instruction followed by 100 positive examples and 100 negative examples
+- d. A generic template with placeholders for input data and an empty block where the output should go
+- e. A short description of the entity we wish to extract
+
+### **Q133.** Which of the following prompts would be the best if you are building a tool-calling application where the agent has access to 3 math tools?
+- a. A detailed schema description of all tools including constraints and signatures, with instructions on returning format structural outputs, and clear guidelines on picking tools with multiple input/output pairs demonstrating step-by-step reasoning
+- b. A generic instruction template with empty `{Instruction}`, `{Input}` placeholders
+- c. A prompt with tools missing constraints but containing 10 examples of math questions
+- d. NONE of these prompts are appropriate for tool-calling
+- e. A prompt that tells the model it is a math professor and can solve any problem without explicitly mentioning tool signatures
+
+### **Q134.** Which of the following prompts would be the best if you are building an agentic application that implements a reflex design pattern?
+- a. A prompt that breaks down execution into execution loops, instructing the model to generate an output based on the user query, pass it to an evaluator component, critique the response, identify missing criteria, reformulate execution instructions, and run generation iteratively until criteria are satisfied
+- b. A prompt with a generic template with placeholders for `{Query}` and `{Context}`
+- c. A prompt that contains rules about not inventing details and saying "I couldn't find this information" but missing evaluation steps
+- d. NONE of these prompts are appropriate for a reflex design pattern
+- e. A prompt that lists a set of tools but missing the instructions on critiquing its own response
+
+### **Q135.** Which of the following prompts would be the best if you are building an agentic application that implements a planning design pattern?
+- a. A prompt that breaks execution down into distinct operational steps: instructing the model to take a user query, decompose it into smaller logical steps, write down a plan, execute each sub-task systematically, monitor intermediate results, and assemble the partial results into a final answer
+- b. A generic instruction template with empty execution loops
+- c. A prompt that tells the model to use general knowledge without notifying the user when information is missing
+- d. NONE of these prompts are appropriate for a planning design pattern
+- e. A prompt that tells the model to answer quickly without breaking down the problem
+
 ---
 
-## Topic 7: What are LLMs?
+## LLMs
 
 ### **Q80.** We loaded a pretrained decoder-only transformer (LlamaForCausalLM) from HuggingFace. The model has `Embedding(128256, 2048)` and `lm_head: Linear(in_features=2048, out_features=128256)`. What is the vocabulary size of the model?
+
+```python
+LlamaForCausalLM(
+  (model): LlamaModel(
+    (embed_tokens): Embedding(128256, 2048)
+    (layers): ModuleList(
+      ...
+    )
+    (norm): LlamaRMSNorm((2048,), eps=1e-05)
+    (rotary_emb): LlamaRotaryEmbedding()
+    )
+  (lm_head): Linear(in_features=2048, out_features=128256, bias=False)
+)
+```
+
 - a. 8192
 - b. Vocabulary size will vary depending on the length of the prompt
 - c. 128256
@@ -987,6 +1210,7 @@ Which, if any, of the following strings would the expression match?
 - j. More information is needed
 
 ### **Q81.** In the same Llama model, what is the "lm_head" component doing?
+
 - a. ALL other options are correct
 - b. Projecting the input embedding of a token into the Query vector
 - c. Mapping embedding vectors from the last transformer block into logits (to generate a probability distribution over output tokens)
@@ -1154,6 +1378,35 @@ Which, if any, of the following strings would the expression match?
 - f. The use of mixture-of-experts architectures has allowed for efficient training of larger models with more parameters
 
 ### **Q100.** Given a Llama model summary with `input_layernorm` and `post_attention_layernorm` in each decoder layer, what is the `post_attention_layernorm` doing?
+```python
+LlamaForCausalLM(
+  (model): LlamaModel(
+    (embed_tokens): Embedding(128256, 2048)
+    (layers): ModuleList(
+      (0-15): 16 x LlamaDecoderLayer(
+        (self_attn): LlamaAttention(
+          (q_proj): Linear(in_features=2048, out_features=2048, bias=False)
+          (k_proj): Linear(in_features=2048, out_features=512, bias=False)
+          (v_proj): Linear(in_features=2048, out_features=512, bias=False)
+          (o_proj): Linear(in_features=2048, out_features=2048, bias=False)
+        )
+        (mlp): LlamaMLP(
+          (gate_proj): Linear(in_features=2048, out_features=8192, bias=False)
+          (up_proj): Linear(in_features=2048, out_features=8192, bias=False)
+          (down_proj): Linear(in_features=8192, out_features=2048, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): LlamaRMSNorm((2048,), eps=1e-05)
+        (post_attention_layernorm): LlamaRMSNorm((2048,), eps=1e-05)
+      )
+    )
+    (norm): LlamaRMSNorm((2048,), eps=1e-05)
+    (rotary_emb): LlamaRotaryEmbedding()
+  )
+  (lm_head): Linear(in_features=2048, out_features=128256, bias=False)
+)
+```
+
 - a. NONE of the other answers are correct
 - b. normalizing the output of the self-attention layer before adding it to the residual embedding
 - c. normalizing the initial token embeddings on input to the network
@@ -1209,7 +1462,23 @@ Which, if any, of the following strings would the expression match?
 - e. balancing the amount of data used for training and testing an LLM so as to optimise performance for a given number of model parameters
 - f. deploying an LLM on much faster computational resources
 
-### **Q106.** According to the LLM prompt below, how many different tools are available for the agent? *(Tools listed: exponentiate, compound_interest, play_radio_tool, pause_radio_tool, increase_radio_volume_tool, decrease_radio_volume_tool, search_tool5, translate_tool6)*
+### **Q106.** According to the LLM prompt below, how many different tools are available for the agent to make use of?
+
+> "You are an assistant that has access to the following set of tools.
+> Here are the names and descriptions for each tool:
+> **exponentiate**(base: float, power: float) -> float - computes base raised to the power
+> **compound_interest**(principal: float, rate: float, years: float) -> float - applies interest rate to principal for set number of years
+> **play_radio_tool**() - starts the radio
+> **pause_radio_tool**() - pauses the radio if it is playing
+> **increase_radio_volume_tool**() - increases the volume of the radio if it is playing
+> **decrease_radio_volume_tool**() - decreases the volume of the radio if it is playing
+> **search_tool5**(query: str) -> list[str] - uses the query to perform a web search and return a list of relevant documents
+> **translate_tool6**(input: str, language: str) -> str - returns input translated into the language
+> Given the user input, return the name and input of the tool to use.
+> Return your response as a JSON blob with 'name' and 'arguments' keys.
+> The `arguments` should be a dictionary, with keys corresponding to the argument names and the values corresponding to the requested values.
+> If the tool takes no arguments, provide an empty dictionary."
+
 - a. 2 tools
 - b. No tools are provided in the prompt
 - c. 5 tools
@@ -1262,7 +1531,7 @@ Which, if any, of the following strings would the expression match?
 - c. They are both text-to-speech systems based on a Transformer architecture
 - d. ALL of the other options are true
 
-### **Q113.** Which, if any, of the following techniques is NOT used to produce a spectrogram for analysing audio signals? *(2022-23 variant)*
+### **Q113.** Which, if any, of the following techniques is NOT used to produce a spectrogram for analysing audio signals? 
 - a. All of the other techniques are used
 - b. Dimensionality reduction (t-SNE)
 - c. Pre-emphasis filtering
@@ -1298,123 +1567,23 @@ Which, if any, of the following strings would the expression match?
 - e. NONE of the other options is correct
 - f. a measure of search result quality that combines the output of four different retrieval measures
 
+### **Q189.** In evaluating machine translation or text generation, how does the ROUGE metric differ fundamentally from BLEU?
+- a. BLEU is calculated manually by human judges while ROUGE is entirely algorithmic
+- b. BLEU focuses primarily on precision (how many generated n-grams match the reference), whereas ROUGE focuses primarily on recall (how many reference n-grams are successfully generated)
+- c. ROUGE can only process character-level inputs while BLEU requires full paragraph vectors
+- d. BLEU measures structural parse tree similarities exclusively
+- e. NONE of the other options are correct
+
+### **Q160.** Which of the following evaluations represents a "non-parametric" approach?
+- a. t-test
+- b. ANOVA
+- c. Wilcoxon signed-rank test
+- d. F-test
+- e. NONE of the other options are correct
+
 ---
 
 ## Unmapped Original Content Topics
-
-### **Q117.** Which of the following is **NOT** a text pre-processing step in an NLP application?
-- a. ALL of the other options are common preprocessing activities
-- b. Masked language modeling
-- c. Removing HTML markup
-- d. Removing stopwords
-- e. Removing low-frequency terms
-- f. Case-folding
-- g. Tokenization
-- h. Spelling correction
-- i. Lemmatization/Stemming
-
-### **Q118.** Which of the following is a **common** text pre-processing step in an NLP application?
-- a. Tokenization
-- b. Removing HTML markup
-- c. ALL of the other options are common preprocessing activities
-- d. Lemmatization or stemming
-- e. Stopword removal
-- f. Case-folding
-
-### **Q119.** Word normalisation is the process of:
-- a. NONE of the other options are correct
-- b. padding the input sequence to BERT so that each sequence has exactly the same length
-- c. dividing the word embedding vector by its L2 norm, so that it has a Euclidean length of 1
-- d. removing profanities (swear words) and other inappropriate content from a piece of text
-- e. aligning words to a common reference dictionary (e.g. by removing punctuation), so as to ensure consistent spelling/formatting throughout the corpus
-
-### **Q120.** What is the difference between stemming and lemmatization?
-- a. Stemming is a simple algorithm that applies rules to remove suffixes from word stems, while lemmatization is a more sophisticated technique that uses a dictionary and morphological analysis to extract the lemma
-- b. Lemmatization is a simple algorithm that applies rules to remove suffixes from word lemmas, while stemming is a more sophisticated technique that uses a dictionary and morphological analysis to extract the stem
-- c. Stemming and lemmatization are exactly the same
-- d. Stemming involves finding the STEM (Science Technology Engineering and Mathematics) terms in the text, while lemmatisation searches only for the lemmas (mathematical equations) in the text
-- e. NONE of the other options are correct
-- f. Stemming involves finding the stem word in the sentence (i.e. the subject of the sentence), while lemmatisation searches for the lemma, which is the primary verb in the sentence
-
-### **Q121.** What effect does Byte-Pair Encoding (BPE) achieve in Transformer models?
-- a. ALL of the other answers are CORRECT
-- b. improves performance of the Transformer by taking advantage of morphology of the language
-- c. reduces the vocabulary size with respect to a word-level tokeniser
-- d. allows common suffixes to be removed from words and treated separately
-- e. increases vocabulary size with respect to a character-level tokenizer
-- f. reduces the sequence length by grouping frequent character sequences together
-
-### **Q122.** Byte-pair encoding:
-- a. is a way of quantising the parameters of a transformer such that they only occupy 2 bytes each (half-precision representation)
-- b. agglomerates common consecutive characters together to form sub-word tokens
-- c. represents each word as a byte-pair vector, which is similar to a one-hot vector but with two non-zero values in it
-- d. none of the other options is correct
-- e. encodes text as byte-pairs: 2 bytes for each character in the text
-
-### **Q123.** What are ASCII and UTF-8, and what is the difference between them?
-- a. None of the other options are correct
-- b. Multimedia file formats: main difference is that ASCII is a plain text format, while UTF-8 is a binary format allowing for richer media content
-- c. Encryption algorithms: main difference is that ASCII uses symmetric encryption, while UTF-8 uses asymmetric encryption
-- d. Web development languages: main difference is that ASCII is primarily used for client-side scripting, while UTF-8 is used for server-side scripting
-- e. Character encoding standards: main difference is that ASCII supports only basic English characters, while UTF-8 can represent characters from many languages
-
-### **Q124.** Which of the following is a character encoding standard that can represent characters from many different languages?
-- a. Byte-pair encoding
-- b. FastText
-- c. UTF-8
-- d. ASCII
-- e. NONE of the other options are correct
-
-### **Q130.** Which of the following statements about the most frequently occurring words in a corpus is true?
-- a. they are the most important words in the query
-- b. they result in short posting lists
-- c. they should never be removed during preprocessing
-- d. they are the most discriminative words in any document
-- e. NONE of the other answers are correct
-
-### **Q131.** In Information Theory, the logarithm of one over the probability of an event corresponds to:
-- a. the optimal parameter setting for that feature
-- b. the chance that the event will happen again
-- c. the amount of information learnt from the event
-- d. the number of times the event occurs
-- e. nothing — in information theory, the exponent of the probability is important, not its logarithm
-- f. NONE of the other options is correct
-
-### **Q132.** Which of the following prompts would be the best if you are building an information extraction system using a few-shot learning approach?
-- a. A prompt that contains a detailed description of the entity schema, constraints, rules, structural constraints, error profiles, along with 5 high quality input/output examples of matching structural formats and descriptions
-- b. NONE of these approaches are valid
-- c. A prompt that provides an instruction followed by 100 positive examples and 100 negative examples
-- d. A generic template with placeholders for input data and an empty block where the output should go
-- e. A short description of the entity we wish to extract
-
-### **Q133.** Which of the following prompts would be the best if you are building a tool-calling application where the agent has access to 3 math tools?
-- a. A detailed schema description of all tools including constraints and signatures, with instructions on returning format structural outputs, and clear guidelines on picking tools with multiple input/output pairs demonstrating step-by-step reasoning
-- b. A generic instruction template with empty `{Instruction}`, `{Input}` placeholders
-- c. A prompt with tools missing constraints but containing 10 examples of math questions
-- d. NONE of these prompts are appropriate for tool-calling
-- e. A prompt that tells the model it is a math professor and can solve any problem without explicitly mentioning tool signatures
-
-### **Q134.** Which of the following prompts would be the best if you are building an agentic application that implements a reflex design pattern?
-- a. A prompt that breaks down execution into execution loops, instructing the model to generate an output based on the user query, pass it to an evaluator component, critique the response, identify missing criteria, reformulate execution instructions, and run generation iteratively until criteria are satisfied
-- b. A prompt with a generic template with placeholders for `{Query}` and `{Context}`
-- c. A prompt that contains rules about not inventing details and saying "I couldn't find this information" but missing evaluation steps
-- d. NONE of these prompts are appropriate for a reflex design pattern
-- e. A prompt that lists a set of tools but missing the instructions on critiquing its own response
-
-### **Q135.** Which of the following prompts would be the best if you are building an agentic application that implements a planning design pattern?
-- a. A prompt that breaks execution down into distinct operational steps: instructing the model to take a user query, decompose it into smaller logical steps, write down a plan, execute each sub-task systematically, monitor intermediate results, and assemble the partial results into a final answer
-- b. A generic instruction template with empty execution loops
-- c. A prompt that tells the model to use general knowledge without notifying the user when information is missing
-- d. NONE of these prompts are appropriate for a planning design pattern
-- e. A prompt that tells the model to answer quickly without breaking down the problem
-
-
-### **Q139.** Which of the following would NOT be considered a limitation of regular-expression based text extraction?
-- a. the potential for a high number of false positives, due to insufficiency of syntactical structure to prevent them
-- b. the potential for a high number of false negatives, due to lack of generality of the rule
-- c. ALL of the other options are indeed limitations of the approach
-- d. the difficulty to integrate knowledge of context around the extracted entity
-- e. the difficulty associated with writing extraction rules by hand
 
 
 ### **Q143.** Why are Natural Language Processing (NLP) techniques important?
@@ -1446,105 +1615,6 @@ Which, if any, of the following strings would the expression match?
 - d. contains multiple out-of-vocabulary terms
 - e. NONE of the other options is correct
 
-
-
-### **Q155.** What is the purpose of "Good-Turing smoothing"?
-- a. to reduce the memory footprint of an ngram language model
-- b. to approximate high-order ngrams using low-rank factorisation
-- c. to re-estimate the probability of unseen or low-frequency n-grams based on the frequency of other low-frequency n-grams
-- d. to smooth out the audio signal in a speech recognition system
-- e. NONE of the other answers is correct
-
-### **Q160.** Which of the following evaluations represents a "non-parametric" approach?
-- a. t-test
-- b. ANOVA
-- c. Wilcoxon signed-rank test
-- d. F-test
-- e. NONE of the other options are correct
-
-### **Q170.** In a Transformer model, why do we multiply the queries and keys matrix by `1 / sqrt(d_k)` inside the softmax?
-- a. to reduce the number of parameters in the model
-- b. to prevent the dot-products from growing too large in magnitude, which would push the softmax function into regions with dangerously small gradients
-- c. to break the position symmetry of input tokens
-- d. to enforce causal masking during generation
-- e. NONE of the other answers is correct
-
-### **Q171.** What type of attention mechanism is used in the decoder of a Transformer model to ensure it cannot look at future tokens?
-- a. Multi-head Attention
-- b. Cross Attention
-- c. Masked / Causal Self-Attention
-- d. Bidirectional Attention
-- e. Sparse Attention
-
-### **Q172.** "Multi-head attention" allows the model to:
-- a. compress the prompt length dynamically
-- b. attend to information from different representation subspaces at different positions simultaneously
-- c. run on multiple GPUs without communicating parameters
-- d. substitute the feed-forward network block entirely
-- e. NONE of the other options is correct
-
-### **Q173.** In a Transformer block, what is the role of the "Residual Connection"?
-- a. to store hidden tokens for later retrieval tasks
-- b. to pass position details directly to the output layer
-- c. to allow gradients to flow directly through blocks without passing solely through non-linear layers, mitigating vanishing gradient issues
-- d. to enforce strict sorting parameters on sequence indices
-- e. NONE of the other options are correct
-
-### **Q174.** What is the purpose of the "Layer Normalisation" step in a Transformer layer?
-- a. it scales the vocabulary size to a power of 2
-- b. it normalises activations across features within a single training example to stabilize training dynamics
-- c. it flattens the matrix into a single-dimensional array
-- d. it eliminates the need for activation functions like ReLU or GeLU
-- e. NONE of the other options are correct
-
-### **Q175.** Which architecture typically discards the encoder stack entirely, relying instead on autoregressive blocks to predict the subsequent token?
-- a. BERT
-- b. RoBERTa
-- c. Decoder-Only Models (e.g., GPT, Llama)
-- d. T5
-- e. DeBERTa
-
-### **Q176.** What is a major disadvantage of using absolute positional encodings like sinusoidal vectors?
-- a. They add too many trainable parameters to the base model
-- b. They fail to generalise or extrapolate effectively to sequence lengths longer than those seen during model pre-training
-- c. They make the attention matrix asymmetric by default
-- d. They can only be used with word-level tokenisers
-- e. NONE of the other choices is correct
-
-### **Q177.** In text generation, "Beam Search" differs from "Greedy Search" by:
-- a. choosing a random token at each generation step based on temperature distributions
-- b. keeping track of a fixed number (beam width) of the most probable partial sequences at each step rather than just the single best token
-- c. parsing the document from right to left instead of left to right
-- d. removing duplicate n-grams dynamically via regular expression matches
-- e. NONE of the other options is correct
-
-### **Q178.** What does the "Temperature" parameter control during token sampling?
-- a. the speed at which the GPU processes text blocks
-- b. the scale of the logits before applying softmax, where higher values flatten the distribution and introduce more randomness/creativity
-- c. the context window limitation profile of the model
-- d. the learning rate decay schedule during instruction tuning
-- e. NONE of the other options are correct
-
-### **Q179.** Top-p sampling (also known as Nucleus sampling) selects from:
-- a. a fixed number of top tokens regardless of cumulative value
-- b. the smallest possible set of top tokens whose cumulative probability exceeds the threshold p
-- c. tokens that have prime number indices in the tokenizer vocabulary matrix
-- d. positions matching absolute sinusoidal indices exclusively
-- e. NONE of the other answers is correct
-
-### **Q180.** Why can text generated using pure Greedy Search sometimes become stuck in repetitive loops?
-- a. because the model parameters change dynamically during inference
-- b. because it deterministically selects the local maximum token, which can lead the context path into highly predictable, cyclic logit loops
-- c. because greedy search forces the model to execute backward passes during text output steps
-- d. because vocabulary indices are arranged alphabetically
-- e. NONE of the other choices is correct
-
-### **Q181.** What is the purpose of a "repetition penalty" parameter during language model decoding?
-- a. it throws a runtime error if the model repeats a word within 10 tokens
-- b. it artificially discounts the logits of tokens that have already appeared in the generated text sequence, discouraging redundancy
-- c. it increases the training loss if validation subsets overlap
-- d. it scales down context parameters across multi-head attention blocks
-- e. NONE of the other options are correct
 
 ### **Q182.** Fine-tuning a pre-trained language model on a curated dataset of instructions and responses is called:
 - a. Masked Language Pre-training
@@ -1595,12 +1665,6 @@ Which, if any, of the following strings would the expression match?
 - d. Inverted Index Mapping
 - e. NONE of the other answers is correct
 
-### **Q189.** In evaluating machine translation or text generation, how does the ROUGE metric differ fundamentally from BLEU?
-- a. BLEU is calculated manually by human judges while ROUGE is entirely algorithmic
-- b. BLEU focuses primarily on precision (how many generated n-grams match the reference), whereas ROUGE focuses primarily on recall (how many reference n-grams are successfully generated)
-- c. ROUGE can only process character-level inputs while BLEU requires full paragraph vectors
-- d. BLEU measures structural parse tree similarities exclusively
-- e. NONE of the other options are correct
 
 ### **Q190.** What is the primary goal of "Model Distillation" in natural language processing?
 - a. to combine multiple open-source LLMs into a massive unified mixture of experts
@@ -1636,3 +1700,14 @@ Which, if any, of the following strings would the expression match?
 - c. to trace semantic lineage dependencies across multi-turn user prompt history files
 - d. to act as a parameter-efficient fine-tuning adapter within decoder stacks
 - e. NONE of the other answers is correct
+
+---
+
+## A Joke
+
+### Q200. Which of the following techniques for identifying students attempting to cheat by using ChatGPT during an exam would NOT be effective?
+- a. Doing nothing, since ChatGPT is morally obliged not to help them during an exam, and would get the answer wrong anyway
+- b. All of the other options are effective approaches
+- c. Hiding instructions in very small white font within the question text, so that it is copied into the ChatGPT prompt by the student
+- d. Training a model to determine whether the text entered by the student was produced by ChatGPT
+- e. Forcing students to use a safe browser so that they can't access ChatGPT during the exam
