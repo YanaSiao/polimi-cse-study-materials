@@ -89,4 +89,87 @@ However, the transition probabilities depend explicitly on time.
 - (A) Optimizes the parameters of a stochastic policy by playing a stochastic policy  
 - (B) Optimizes the parameters of a deterministic policy by playing a stochastic policy ✅  
 - (C) Optimizes the parameters of a deterministic policy by playing a deterministic policy  
-- (D) Optimizes the parameters of a stochastic policy by playing a deterministic policy  
+- (D) Optimizes the parameters of a stochastic policy by playing a deterministic policy
+
+---
+
+## June 2026
+
+### 1. In value iteration, intermediate V:
+
+- (A) Always corresponds to optimal policy  
+- (B) Always corresponds to some policy  
+- (C) Never corresponds to any policy  
+- (D) May not correspond to any policy ✅  
+
+
+### 2. Every-visit MC can be biased because:
+
+- (A) Rewards are deterministic  
+- (B) It uses fewer samples  
+- (C) Visits are not independent ✅  
+- (D) States are finite  
+
+
+### 3. When λ = 1, TD(λ):
+
+- (A) Eliminates variance  
+- (B) Removes bias completely  
+- (C) Approximates Monte Carlo ✅  
+- (D) Is identical to DP  
+
+
+### 4. Semi-gradient TD(0) is called "semi-gradient" because:
+
+- (A) It uses half the gradient norm  
+- (B) It only works for episodic tasks  
+- (C) It ignores rewards  
+- (D) It treats the bootstrap target as a constant w.r.t. parameters ✅  
+
+
+### 5. Fitted Q Iteration (FQI) can be seen as:
+
+- (A) An on-policy Monte Carlo method  
+- (B) Fitted policy iteration with a fixed policy  
+- (C) Iterating regression on Bellman optimality targets over a dataset ✅  
+- (D) A pure planning algorithm requiring a model  
+
+
+### 6. Double Q-learning is introduced mainly to:
+
+- (A) Mitigate the overestimation bias ✅  
+- (B) Generate actions during exploration only  
+- (C) Reduce correlation between samples  
+- (D) Stabilize bootstrapping targets by updating them less frequently  
+
+
+### 7. Dyna combines model-free learning with planning by:
+
+- (A) Replacing the value function with a model  
+- (B) Interleaving real updates with simulated updates from a learned model ✅  
+- (C) Using MCTS exclusively  
+- (D) Learning only from real experience  
+
+
+### 8. Which of the following is a trust-region algorithm?
+
+- (A) REINFORCE  
+- (B) A2C  
+- (C) PPO ✅  
+- (D) DQN  
+
+
+### 9. The natural policy gradient provides:
+
+- (A) A lower-variance estimate of the regular policy gradient  
+- (B) The steepest ascent direction in policy parameter space ✅  
+- (C) An unbiased estimate of the regular policy gradient  
+- (D) The steepest ascent direction in parameter space  
+
+
+### 10. In Actor-Critic algorithms, the critic is meant to approximate:
+
+- (A) The value function of the current policy ✅  
+- (B) The optimal value function  
+- (C) The optimal policy  
+- (D) The behavior policy with a small number of parameters
