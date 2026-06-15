@@ -32,7 +32,8 @@ The suggestions are meant to **complement** the questions file and help reduce u
 
 These materials are **not official course resources**.
 
-They are based on my personal study experience and on publicly available exam information.  
+While the course instructors have kindly permitted the sharing of these practice concepts, they have not reviewed, checked, or verified any of the content in this repository. All solutions, explanations, and notes represent my personal study perspective and interpretation of the course material. They should not be treated as an official university answer key.
+
 All content is shared for **non-commercial academic use only**, in accordance with the repository license.
 
 
