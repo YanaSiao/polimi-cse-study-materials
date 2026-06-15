@@ -1,4 +1,6 @@
-© Yana Siao. Academic use only. Redistribution requires attribution.
+⚠️ Notice: These file is entirely student-made. The course instructors have not reviewed or verified this material, and it does not represent an official university answer key. For full details and licensing, please refer to the main repository README.
+
+---
 
 ### Modeling Distributed System 15/26
 
