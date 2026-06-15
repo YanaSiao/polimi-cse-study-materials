@@ -72,5 +72,6 @@ If this repository helps you, consider:
 ## ⚠️ Disclaimer
 
 This repository is **not an official resource** of Politecnico di Milano.
+While professors have kindly permitted the sharing of these practice concepts, they have not reviewed, checked, or verified any of the content in this repository. All solutions, explanations, and notes represent my personal study perspective and interpretation of the course material. They should not be treated as an official university answer key.
 
 Some materials may reference or include third-party content used strictly for educational purposes. All rights remain with their respective authors. If you are a rights holder and believe content should be removed, please get in touch.
