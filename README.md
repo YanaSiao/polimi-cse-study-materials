@@ -30,20 +30,23 @@ The goal is to support other students facing similar challenges and to contribut
 
 ## 🤝 Contributions & Collaboration
 
-You are welcome to:
+You are welcome to use these materials for your own studies, provided you respect the terms of the project license.
 
-- Use these materials for your own studies
-- Share them under the conditions described in the license
+If you have notes, exam insights, or corrections you would like to share with the community, please reach out to me via email at syao.yana@gmail.com or in telegram via subject group chats.
 
-If you would like to contribute additional value — such as:
-- corrections or comments  
-- new notes  
-- exam insights  
-- or entire new subjects  
+#### Contribution Guidelines
 
-please feel free to contact me via email:
+Before submitting, please note the following policies:
 
-📧 **syao.yana@gmail.com**
+- **Raw Materials Accepted**: I appreciate well structured and curated material, but you do not have to format your notes! I am happy to receive raw materials (e.g., rough notes, unformatted text, or summaries). I will use these to update the question banks or integrate them into my own study notes.
+
+- **Intellectual Property:** If your submission directly incorporates a professor's slides, diagrams, or proprietary texts, **you must obtain their written permission** to share that content publicly. If the material requires professor permission, please include a copy or forward of their email approval along with your submission. 
+
+- **Originality**: I strongly encourage you to adapt and personalize your notes. Submissions that are original summaries rather than direct copies of course material are prioritized, as they are more helpful for learning and avoid potential copyright issues.
+
+- **Quality Control**: I reserve the right to decline, modify, or limit any information submitted to this page. My goal is to maintain a high-quality, truthful, and non-offensive resource for all students.
+
+- **Attribution**: If your submission is accepted, please let me know if you would like to be credited by your real name, a nickname, or if you prefer to remain anonymous.
 
 
 ## 📜 License & Usage Conditions
