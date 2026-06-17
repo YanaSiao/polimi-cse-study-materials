@@ -1,3 +1,13 @@
+⚠️ Notice: This document contains unofficial exam questions recollected by students who have previously sat for this oral exam.
+
+- No Academic Review: These questions have not been reviewed, confirmed, or corrected by the course instructors.
+
+- Dynamic Content: As this is an oral exam, questions may vary significantly based on the student's specific academic background, the professor's focus, and the current course curriculum.
+
+- Unofficial Resource: This file is intended solely for study purposes to help students understand the scope and general level of difficulty of the oral exam. It should not be considered an official source of exam material.
+
+---
+
 # Reinforcement Learning – Oral Exam Questions
 
 ## Restelli
@@ -66,3 +76,13 @@
 - What happens if we introduce a baseline that **increases bias**?
 - What happens if the baseline depends only on the **state** and not on the full trajectory?
   - (reduced bias while maintaining variance reduction)
+ 
+---
+
+This question bank is a community-driven effort. To keep this document accurate and helpful for future students, please contribute if you have recently taken this exam:
+
+Telegram: Please share your recollections in the Reinforcement Learning Group Chat.
+
+Email: If you prefer, send your notes directly to syao.yana@gmail.com.
+
+All contributions will be anonymized before being added to this bank. Thank you for helping your fellow students!
