@@ -11,10 +11,11 @@ a part of the Computer Science and Engineering Master’s degree at **Politecnic
 
 ## Content Breakdown
 Inside this directory, you will find:
-* **`exam-questions.md`**: A comprehensive, topic-grouped list of exam questions ordered exactly as the material is
-  presented in the lectures. 
-  > *Note: These questions were compiled using two official exams from each year (2023, 2024, and 2025).*
+* ~~**`exam-questions.md`**: A comprehensive, topic-grouped list of exam questions ordered exactly as the material is
+  presented in the lectures.~~
+  > *Note: These questions were compiled using two exams samples from each year (2023, 2024, and 2025).*
 
+- I have a "test questions" bank ordered by topic and "open questions" bank, but I am still waiting for the professor's permission to publish them. If you need them now, contact me in telegram (NLP group chat). 
 
 
 ## Study & Survival Suggestions
