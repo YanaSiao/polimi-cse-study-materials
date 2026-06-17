@@ -11,8 +11,11 @@ Master’s degree at **Politecnico di Milano**.
 ## Contents
 
 This folder currently includes:
-- full-theory, advanced, and coding exam questions  (officially released samples rewritten as text and student-collected questions),
+- ~~full-theory, advanced, and coding exam questions  (officially released samples rewritten as text and student-collected questions),~~
 
+- I have collected exam questions from 2025-2026, but professor have not yet give me permission to publish his materials yet. If you need them, text me in telegram (you can find me in the recommender systems group) or via email.  If you have more question samples, please, share them with me, so that we can help more people.
+
+In either case, stay tuned, I will adapt these materials for you in an appropriate format. 
 
 ## Study Suggestions
 
