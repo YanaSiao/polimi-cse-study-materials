@@ -13,10 +13,12 @@ The course was taught by:
 This folder includes:
 
 - **Oral exam questions**  
-  A collection of questions gathered from previous oral exam sessions.
+  A collection of questions gathered from previous oral exam sessions by students, who took the exam.
 
-- **Written test questions**  
-  A collection of questions from previous exam sessions.
+- ~~**Written test questions**  
+  A collection of questions from previous exam sessions.~~
+  
+  (still waiting the professor's permission to publish his materials.)
 
 - **Study materials**  
   Notes and resources used for theory review and exam preparation.
