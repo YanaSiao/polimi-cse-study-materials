@@ -1,4 +1,6 @@
-⚠️ Notice: These file is entirely student-made. The course instructors have not reviewed or verified this material, and it does not represent an official university answer key. For full details and licensing, please refer to the main repository README.
+⚠️ Notice: THIS IS NOT THE OFFICIAL SOLUTION! 
+
+This file is entirely student-made. The course instructors have not reviewed or verified this material, and it does not represent an official solution. For full details and licensing, please refer to the main repository README.
 
 ---
 
@@ -466,56 +468,93 @@ In traditional TinyML, a model is trained in the cloud and frozen before being d
 
 ---
 
+## Explain the concept of on-device tiny machine learning in the context of device personalization and discuss its advantages and disadvantages.
+
+Traditional Machine Learning relies on sending local data up to centralized cloud servers to train or fine-tune models. **Tiny Machine Learning (TinyML)** shifts this dynamic by packing machine learning workloads onto ultra-low-power, resource-constrained edge hardware, such as microcontrollers (MCUs) found in smartwatches, hearing aids, and IoT sensors. 
+
+While the majority of first-generation TinyML applications are **inference-only** (where a static, pre-trained model runs forward passes locally), **on-device personalization** introduces the ability to execute *on-device learning*. Instead of remaining static, the model updates its own internal parameters or classification thresholds directly on the physical hardware to tailor itself to the specific user, behavior, or environment.
+
+
+
+### How it Works: The Underlying Mechanics
+Because microcontrollers lack the vast compute and RAM needed to train an entire neural network from scratch, personalization typically relies on specialized techniques:
+1. **Tiny Transfer Learning (Frozen Layers):** The main body of a neural network—the heavy feature-extraction layers—is trained offline on a large dataset and frozen during deployment. Only a very small, lightweight classification "head" (e.g., the last few dense layers) remains trainable. When the device encounters the specific user's data, it only calculates backpropagation gradients for those few unfrozen parameters.
+2. **Prototypical / Few-Shot Learning:** In applications like Keyword Spotting (KWS), a user can record a few samples of a unique voice command. The model maps these recordings into a feature space, creating a local "prototype vector." Future inputs are classified simply by computing their mathematical distance from these local prototypes, avoiding backpropagation entirely.
+
+
+
+### Advantages of On-Device Personalization
+
+* **Overcoming User and Environmental Heterogeneity:** Generalized models often fail when encountering unique, real-world edge cases. In Human Activity Recognition (HAR), for instance, every individual has a unique physical gait, resting heart rate, and movement style. Personalization allows a wearable device to fine-tune its parameters, leading to substantial jumps in accuracy (often upwards of 30% or more) tailored exactly to that user.
+* **Absolute Data Privacy and Security:** Personalization often requires interacting with highly sensitive biometric signatures, health metrics, or voice data. By executing both inference and model updates locally, raw personal data never has to leave the device or traverse the internet. Only the localized mathematical adjustments stay in internal memory, inherently complying with strict global data privacy regulations.
+* **Continuous and Offline Adaptability:** A personalized TinyML device operates completely independently of network availability, cloud infrastructure, or internet cellular connectivity. This ensures that the device can adapt dynamically to structural changes (such as a mechanical part wearing down in an industrial sensor or a user changing their daily habits) even in remote or offline locations.
+* **Substantial Bandwidth and Cloud Cost Reductions:** Transmitting raw, high-frequency sensor streams (e.g., continuous 50Hz accelerometer logs or audio feeds) across wireless protocols consumes immense energy and incurs massive cloud-hosting costs. Personalizing locally eliminates the need to constantly offload telemetry data back to high-performance servers.
+
+
+### Disadvantages and Engineering Challenges
+
+* **Severe Memory (SRAM) Constraints:** Microcontrollers typically feature minimal internal RAM (often less than 256 KB to 1 MB). While running a model in inference mode requires very little memory, **training** via backpropagation requires storing intermediate feature maps and activation matrices during the forward pass to compute gradients during the backward pass. This creates a massive memory bottleneck that can easily exceed physical chip limits.
+* **Numerical Instability in Low-Precision Math:** To run efficiently on microcontrollers, models are usually compressed via quantization into low-precision formats like 8-bit integers (INT8). However, training algorithms rely heavily on ultra-precise, continuous derivative calculations. Executing backward passes in fixed-point or low-precision environments can quickly cause vanishing/exploding gradients, numerical overflow, or mathematical divergence.
+* **Data Scarcity and the Labeling Overhead:** On-device training requires localized ground-truth labels to calculate a loss function. Getting these labels often introduces user friction (e.g., requiring a user to manually click an app to state "I am starting a run now" or prompting them to repeat a keyword 10 times to calibrate a device), which can degrade the seamless consumer user experience.
+* **Temporary Battery and Thermal Spikes:** TinyML devices are intended to operate for months or years on tiny coin-cell batteries or energy-harvesting systems. While inference is mathematically light, running consecutive backpropagation iterations utilizes full CPU or accelerator cycles over several seconds, dramatically accelerating power consumption and generating localized thermal dissipation during active training phases.
+
+---
+
 ## Describe in details the three main families of digital processing algorithms for data preprocessing in TinyML.
 
-In TinyML applications, feeding raw sensor data directly into an on-device neural network is rarely feasible. Raw real-world signals are typically continuous, high-dimensional, and noisy. Because edge microcontrollers (MCUs) operate under tight RAM, Flash, and power constraints, **data preprocessing** acts as a crucial filtering stage. 
+### 1. Reconstruction of Missing Data
+Real-world IoT and edge deployment environments frequently suffer from data loss due to transmission packet drops, sensor faults, power glitches, or communication drops. Since neural network architectures require fixed-dimension, uniform input tensors, missing temporal points must be handled using one of three methodologies:
 
-By applying digital processing algorithms before inference, developers can compress data dimensionality, strip out noise, and extract highly informative features. This vastly reduces the workload on the downstream neural network, allowing smaller, faster, and more energy-efficient models to run locally.
-
-The three primary families of digital processing algorithms used for TinyML preprocessing are detailed below.
-
-
-### **1. Temporal (Time-Domain) Processing Algorithms**
-This family operates directly on raw, one-dimensional time-series data streams captured from sensors like Inertial Measurement Units (IMUs), electrocardiograms (ECGs), or microphones. Their primary goal is to clean up noise and slice continuous real-time data into distinct, manageable segments.
-
-#### **Key Operations & Algorithms**
-* **Sliding Window Segmentation ("Chopping"):** Microcontrollers receive data from sensors as an unbroken, infinite stream. Because neural networks require a fixed input size, a sliding window algorithm "chops" this continuous stream into temporal frames of a fixed length ($W$) at a predefined stride or overlap ($O$). This guarantees that the network processes distinct, uniform blocks of time while retaining contextual continuity between consecutive frames.
-* **Digital Filtering (Noise Mitigation):** Raw sensor data often suffers from high-frequency thermal noise or low-frequency environmental drifts (DC bias). Digital filters reshape the signal profile:
-  * *Moving Average Filters:* Smooth out short-term fluctuations by averaging a set number of past data points.
-  * *Low-Pass / Band-Pass Filters:* Algorithms like Butterworth or IIR (Infinite Impulse Response) filters attenuate unwanted frequencies (e.g., filtering out minor hand tremors from an IMU stream while retaining intentional motion gestures).
-* **Temporal Decimation (Downsampling):** If a sensor samples data faster than necessary for the target AI task, decimation algorithms discard a fixed ratio of samples to lower the data rate, directly reducing the number of Multiply-Accumulate (MAC) operations required downstream.
+* **"Local" Filling Methods:** These methods estimate the missing values using adjacent or neighboring data points. Common algorithms include:
+  * *Forward Fill:* Carrying the last known valid sensor value forward into the missing slot.
+  * *Moving Average:* Taking the mean of a local sliding time window to fill the gap.
+  * *Local Interpolation:* Computing linear or polynomial values between the points flanking the missing data segment.
+* **"Global" Filling Methods:** Missing data points are computed and filled based on structural trends or empirical statistical observations across the *entire* dataset rather than immediate temporal neighbors.
+* **Deletion of Affected Time Periods:** If a continuous block of sensor telemetry is corrupted or missing, the affected time windows are completely discarded and not passed to the TinyML inference engine.
 
 
+### 2. Resampling
+TinyML systems must handle inputs from heterogeneous sources—such as combining data from different physical sensors with varying sampling frequencies, or dealing with dynamic memory/processing limits. Resampling algorithms change the sampling density or shape across both 1D time-series signals and 2D spatial images:
 
-### **2. Spectral & Transform-Domain Processing Algorithms**
-Instead of looking at how a signal changes over time, this family transforms 1D temporal waveforms into the frequency domain. Many physical phenomena—like voice commands or industrial machinery vibrations—are defined by their underlying harmonic frequencies rather than their raw time-domain amplitudes.
-
-#### **Key Operations & Algorithms**
-* **Fast Fourier Transform (FFT):** The mathematical foundation that converts a discrete time-domain segment into its constituent frequency components. It exposes the magnitude and phase of the signal across the frequency spectrum.
-* **Short-Time Fourier Transform (STFT):** Because real-world signals change over time, the STFT applies the FFT sequentially across overlapping temporal windows. This yields a 2D **Spectrogram**—a matrix representing how the frequency composition of the signal evolves over time. 
-* **Mel-Scale Filtering & MFCCs:** Standard frequency scales are linear, but human hearing and many acoustic events are non-linear. The Mel-Frequency Cepstral Coefficients (MFCC) pipeline applies a series of triangular filterbanks to warp the linear spectrum into the non-linear **Mel Scale**. A final Discrete Cosine Transform (DCT) compresses this representation into a compact feature matrix.
-
-> **Edge AI Advantage:** An MFCC pipeline transforms a raw, unwieldy audio stream into a highly compressed, image-like 2D feature map. This map can then be accurately classified by an ultra-lightweight 2D Convolutional Neural Network (CNN), which is the standard implementation for edge wake-word detection.
-
+* **Time-Series Frequency Alteration:**
+  * **Downsampling:** Decreases the timestamp frequency via subsampling to drop redundant data points and reduce downstream microcontroller execution loops. When downsampling, the **Nyquist-Shannon sampling theorem** must be respected to prevent *aliasing* (high-frequency signals folding back as lower frequencies).
+  * **Upsampling:** Increases the timestamp frequency via data replication or continuous interpolation to match the input specifications expected by a fixed multi-sensor model.
+* **Image Spatial and Geometric Resampling:**
+  * **Resolution Changes:** Downsampling reduces the overall spatial layout (pixels per image) to minimize RAM pressure, while spatial interpolation scales resolutions upward.
+  * **Structural Conditioning:** *Cropping* cuts out specific spatial regions of interest (ROI), while *resizing* morphs the absolute aspect ratio dimensions to fit the rigid input requirements of Computer Vision backbones (e.g., MobileNet or SqueezeNet).
 
 
-### **3. Spatial & Structural (Pixel-Level) Processing Algorithms**
-This family is designed specifically for vision-based TinyML or multi-dimensional grid sensors (like time-of-flight depth arrays). Vision processing is the single greatest consumer of memory on edge hardware; spatial processing algorithms aggressively downscale and normalize these arrays so they can fit inside microcontroller static RAM (SRAM).
+### 3. Filtering
+Raw physical sensor data is invariably contaminated with low-frequency drifts (like gravity offsets) or high-frequency disruptions (like thermal or environmental noise). Digital filtering algorithms selectively allow target frequency blocks to pass while attenuating unwanted spectrum noise:
 
-#### **Key Operations & Algorithms**
-* **Color Space Conversion (Bit-Depth Reduction):** A raw camera sensor typically captures 24-bit RGB images ($H \times W \times 3$). Converting the image to an 8-bit Grayscale format ($H \times W \times 1$) reduces the memory footprint by exactly **3× (a 66.7% reduction)**. This simple step can determine whether a vision model can physically load onto a resource-constrained MCU.
-* **Spatial Resizing & Interpolation:** Standard camera modules capture images at high resolutions (e.g., HD or VGA). Spatial processing algorithms downsample these frames to match the target dimensions of the edge network (typically ranging from $96 \times 96$ down to $32 \times 32$ pixels for TinyML). Common interpolation techniques include:
-  * *Nearest-Neighbor:* Extremely fast and mathematically simple, but can introduce blocky artifacts.
-  * *Bilinear Interpolation:* Computes a weighted average of the four nearest pixels, yielding a smoother resized image at a slightly higher computational cost.
-* **Value Normalization & Standardization:** Neural networks perform best when input values are bounded within predictable ranges.
-  * *Min-Max Scaling:* Linearly shifts and scales data into a fixed range, typically $[0, 1]$ or $[-1, 1]$.
-  * *Z-Score Standardization:* Centers the data to have a mean of $0$ and a standard deviation of $1$. This prevents specific input features with large absolute scales from disproportionately biasing the network's weights.
+* **Low-Pass Filter:** Blocks high-frequency structural noise and thermal jitters, keeping only the underlying low-frequency kinetic signals.
+* **High-Pass Filter:** Filters out static, constant offsets or low-frequency drift artifacts while allowing high-frequency dynamic updates to pass.
+* **Band-Pass Filter:** Isolates a specific band of active frequencies while discarding everything below and above it. For example, in an edge-based Keyword Spotting (KWS) or speech recognition system, the filter isolates the human speech spectrum (typically $100\text{ Hz}$ to $4\text{ kHz}$) and cuts out extraneous acoustic noise.
+* **Hardware Integration:** To keep processing power consumption minimal, modern embedded architectures and ultra-low-power microcontrollers provide specialized hardware support (like DSP extensions or hardware MAC blocks) to compute these convolution-heavy filtering operations with minimal clock cycle overhead.
+
+---
+
+## Design a TinyML-based system for real-time human activity recognition using wearable sensors. Describe the types of sensors to be used, the preprocessing pipeline, and how sensor characteristics (e.g., sampling rate, noise, precision) influence model performance and resource usage.
+
+### 1. Sensor Selection
+The system relies on a single, low-power 6-axis **Inertial Measurement Unit (IMU)**:
+* **3-axis Accelerometer:** Measures linear acceleration ($g$ or $\text{m/s}^2$) to capture structural orientation relative to gravity and macroscopic trunk/limb movements.
+* **3-axis Gyroscope:** Measures angular velocity ($\text{rad/s}$ or $\text{deg/s}$) to capture dynamic rotational dynamics and multi-axis gestures.
+* *Device Placement:* Wrist-worn (smartwatch/band) for general gesture tracking, or waist-worn for stable core body classification (e.g., walking, sitting, running).
 
 
-### **Summary: Preprocessing Families At-A-Glance**
+### 2. Preprocessing Pipeline
+To prepare infinite, continuous streams of raw data for an on-device machine learning classifier (e.g., 1D-CNN or lightweight MLP), data flows through three localized stages:
 
-| Algorithm Family | Primary Sensor Types | Input Data Type | Typical Output Feature | Memory Impact on MCU |
-| :--- | :--- | :--- | :--- | :--- |
-| **Temporal** | IMU, ECG, Pressure | Continuous 1D Stream | Segmented 1D Frames | **Low** (Operates on small buffers) |
-| **Spectral** | Microphone, Vibration | Segmented 1D Frames | 2D Spectrogram / MFCC Matrix | **Moderate** (Requires RAM for FFT buffers) |
-| **Spatial** | CMOS Camera, ToF Arrays | High-Res 2D/3D Tensor | Low-Res 8-bit Matrix | **High** (Demands immediate frame-buffer management) |
+1.  **Sliding Window Segmentation:** The continuous streaming data is chopped into fixed-duration temporal blocks. A standard window of **2.5 seconds** with a **50% overlap (1.25-second stride)** ensures that the down-stream model receives a static matrix dimension while preserving continuous motion contexts between windows.
+2.  **Digital Noise Filtering:** A 2nd-order low-pass Butterworth filter with a cutoff frequency ($f_c$) of $20\text{ Hz}$ attenuates high-frequency sensor thermal noise and muscle jitters. Additionally, a complementary filter separates the static gravity vector from the dynamic movement component.
+3.  **Z-Score Normalization:** Sensor values are normalized to have a mean of 0 and a standard deviation of 1. This scales different physics units ($\text{m/s}^2$ from accelerometer and $\text{rad/s}$ from gyroscope) to an equal numerical range, preventing weight bias during neural network Multiply-Accumulate (MAC) computations.
+
+
+### 3. Influence of Sensor Characteristics
+
+| Characteristic | Influence on Model Performance | Influence on Resource Usage | Optimization Strategy |
+| :--- | :--- | :--- | :--- |
+| **Sampling Rate** | Too low (<20 Hz) causes aliasing and misses transient gestures. Too high (>100 Hz) injects redundant, over-correlated steps without accuracy gains. | **High Impact:** Doubling the rate doubles the window array size in RAM and doubles the downstream network input layer MAC operations. | Cap sampling between **30 Hz and 50 Hz**; human kinetic energy rarely exceeds 15–20 Hz. |
+| **Sensor Noise** | A high noise floor blurs feature extraction boundaries, severely lowering validation accuracy on similar static classes (e.g., sitting vs. standing). | **Moderate Impact:** Requires heavy, high-order digital filters which exhaust MCU clock cycles and increase execution latency. | Leverage the IMU's built-in hardware low-pass filters/FIFOs to clean data before it reaches the main MCU. |
+| **Precision / Bit-Width** | Storing values in raw float32 maintains high precision for complex gait analysis, but is mathematically unnecessary for macro-activity classification. | **Severe Impact:** Storing unquantized floating-point buffers drains precious SRAM. Executing floating-point math spikes power draw on non-FPU MCUs. | Apply **Post-Training Quantization (PTQ)** to scale weights and activations to **INT8**. Reduces Flash/RAM footprint by **4×**.
