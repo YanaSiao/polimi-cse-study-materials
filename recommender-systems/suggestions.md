@@ -82,6 +82,10 @@ The lectures feel pleasant, and time passes quickly.
 
 The unfortunate part *for me* was that the course felt **too light**, and I often left the classroom with the feeling that I could have learned more within the same time frame.
 
+Additionally, because the professor is very ambitious and extremely busy, getting a response via email can take a long time (or result in being ghosted completely). 
+
+**Pro tip:** If you need to discuss something with him, catch him in person right after class or during office hours rather than letting the conversation drift into an email thread—in-person communication works infinitely better! Overall, despite the communication friction, I still really liked him as an instructor and person.
+
 ## Exercise Sessions & Labs
 
 The exercise sessions are held by a **PhD student**, who explains the Colab notebooks **block by block**.
