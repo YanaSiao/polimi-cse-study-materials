@@ -10,12 +10,13 @@ Master’s degree at **Politecnico di Milano**.
 
 ## Contents
 
-This folder currently includes:
-- ~~full-theory, advanced, and coding exam questions  (officially released samples rewritten as text and student-collected questions),~~
+This folder includes:
+- **`recommender-systems-checklist.md`**: A comprehensive theoretical concept checklist and study guide covering both standard and advanced exam modules. 
 
-- I have collected exam questions from 2025-2026, but professor have not yet give me permission to publish his materials yet. If you need them, text me in telegram (you can find me in the recommender systems group) or via email.  If you have more question samples, please, share them with me, so that we can help more people.
+> **Note on Exam Materials:** Because official course materials and exact exam questions are proprietary, this checklist does not reproduce exact exam wording. Instead, it was compiled after analyzing multiple exam sessions from the 2025–2026 academic year. The concepts, formulas, and structural prompts reflect the core knowledge required to thoroughly prepare for and pass both the standard and advanced theory exams.
 
-In either case, stay tuned, I will adapt these materials for you in an appropriate format. 
+If you have additional topic insights or concept feedback to share, feel free to contribute so we can keep these study guides helpful for future students! (text me on Telegram or in the group chat)
+
 
 ## Study Suggestions
 
