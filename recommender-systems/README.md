@@ -11,7 +11,8 @@ Master’s degree at **Politecnico di Milano**.
 ## Contents
 
 This folder includes:
-- **`recommender-systems-checklist.md`**: A comprehensive theoretical concept checklist and study guide covering both standard and advanced exam modules. 
+- **`recommender-systems-checklist.md`**: A comprehensive theoretical concept checklist and study guide covering both standard and advanced exam modules.
+- **`recommender-systems-coding-checklist.md`**: A collection of coding implementation exercises and practice problems covering core recommender system algorithms.
 
 > **Note on Exam Materials:** Because official course materials and exact exam questions are proprietary, this checklist does not reproduce exact exam wording. Instead, it was compiled after analyzing multiple exam sessions from the 2025–2026 academic year. The concepts, formulas, and structural prompts reflect the core knowledge required to thoroughly prepare for and pass both the standard and advanced theory exams.
 
